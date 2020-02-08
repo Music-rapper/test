@@ -14,9 +14,7 @@ async def hello(ctx):
 async def say(ctx, *, text):
 	await ctx.send(text)
 	
-@Bot.command()
-async def clear(ctx):
-	await ctx.channel.purge(limit=10000)
+
 		
 @Bot.command()
 async def ping(ctx):
@@ -44,12 +42,12 @@ async def user(ctx, member: discord.Member):
 		emb.add_field(name = "Highest role", value = member.top_role.mention, inline = False)
 	for i in range(2):
 		try:
-    			f1 = open(f'{member.name}.txt', 'w')
+    			f1 = open(f'{str(member)}.txt', 'w')
     			f1.write(f'{member.roles}')
 		finally:
 			f1.close()
 	try:
-		f2 = open(f'{member.name}.txt', 'r')
+		f2 = open(f'{str(member)}.txt', 'r')
 		info = f2.read()
 	finally:
 		f2.close()
