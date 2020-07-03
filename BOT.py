@@ -44,10 +44,6 @@ async def user(ctx, member: discord.Member):
 	emb.set_thumbnail(url = member.avatar_url)
 	emb.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = emb)
-        
-@Bot.event
-async def on_ready():
-	await Bot.change_presence(status = discord.Status.dnd, activity = discord.Game('Playing with developer'))
 	
 token = os.environ.get('BOT_TOKEN')
 
