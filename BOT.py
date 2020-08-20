@@ -11,13 +11,6 @@ Bot = commands.Bot(command_prefix = prefix)
 @Bot.command()
 async def hello(ctx):
     	await ctx.send(f"Hello {ctx.author.mention}")
-	
-@Bot.command()
-async def roles(ctx, member: discord.Member):
-	roles = ''
-	for role in member.roles:
-		roles += member.roles[role]
-	await ctx.send(roles)
 
 @Bot.command()
 async def user(ctx, member: discord.Member):
