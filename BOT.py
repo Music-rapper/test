@@ -19,7 +19,9 @@ async def roles(ctx, member: discord.Member):
 		role_list += f'{member.roles[i]} '
 	await ctx.send(role_list)
 
-
+@Bot.command()
+async def role_id(ctx, member: dicord.Member):
+	await ctx.send(member.roles[9:27])
 	
 @Bot.command()
 async def user(ctx, member: discord.Member):
