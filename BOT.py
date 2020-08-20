@@ -4,11 +4,17 @@ from discord.ext.commands import Bot
 import os
 import time
 
-Bot = commands.Bot(command_prefix = '-')
+prefix = 'r!'
+
+Bot = commands.Bot(command_prefix = prefix)
 
 @Bot.command()
 async def hello(ctx):
     	await ctx.send(f"Hello {ctx.author.mention}")
+	
+@Bot.command()
+async def prefix(ctx, value):
+	prefix = value
 	
 @Bot.event
 async def on_ready():
