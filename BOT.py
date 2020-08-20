@@ -22,10 +22,7 @@ async def roles(ctx, member: discord.Member):
 @Bot.command()
 asycn def role_id(ctx, member: discord.Member):
 	roles_list = member.roles
-    	for i in range(0, len(roles_list)-1):
-        	if roles_list[i] == 'd':
-           	role_id = int(roles_list[i + 1:i + 19])
-            	await ctx.send(roles_list)
+	await ctx.send(roles_list)
 	
 @Bot.command()
 async def user(ctx, member: discord.Member):
