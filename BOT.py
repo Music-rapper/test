@@ -25,6 +25,7 @@ asycn def role_id(ctx, member: discord.Member):
 		if member.roles[i] == 'd':
 			start = i + 1
 			return
+		return
 	role_id = int(member_roles[start:start + 18])
 	await ctx.send(role_id)
 	
