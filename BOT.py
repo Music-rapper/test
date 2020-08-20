@@ -16,8 +16,7 @@ async def hello(ctx):
 async def roles(ctx, member: discord.Member):
 	role_list = ''
 	for i in range(0, len(member.roles)):
-		role_list += member.roles[i]
-		role_lsit += ' '
+		role_list += f'{member.roles[i]} '
 	await ctx.send(role_list)
 
 @Bot.command()
