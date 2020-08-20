@@ -18,11 +18,10 @@ async def prefix(ctx, value):
 
 @Bot.command()
 async def user(ctx, member: dicord.Member):
-	emb = discrod.Embed(title = str(member))
-	emb.colour = member.top_role.colour
-	emb.add_field(name = 'Username', value = member.name)
+	emb = discrod.Embed(title = str(member), description = member.mention, colour = member.top_role.colour)
+	emb.add_field(name = 'Id', value = member.id)
 	emb.set_thumbnail(member.avatar_url)
-	emb.set_footer(text = f'Caused by {ctx.autor}', icon_url = ctx.autor.avatar_url)
+	emb.set_footer(text = f'Caused by:{str(ctx.autor)}', icon_url = ctx.autor.avatar_url)
 	await ctx.send(embed = emb)
 	
 	
