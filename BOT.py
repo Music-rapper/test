@@ -20,12 +20,6 @@ async def roles(ctx, member: discord.Member):
 	await ctx.send(role_list)
 	
 @Bot.command()
-asycn def role_id(ctx, member: discord.Member):
-	roles_list = ''
-	roles_list += f"str({member.roles})"
-	await ctx.send(roles_list)
-	
-@Bot.command()
 async def user(ctx, member: discord.Member):
     	emb = discord.Embed(title = str(member), description = member.mention, color = member.top_role.color)
     	emb.add_field(name = "ID", value = member.id, inline = False)
