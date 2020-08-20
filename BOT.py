@@ -15,6 +15,16 @@ async def hello(ctx):
 @Bot.command()
 async def prefix(ctx, value):
 	prefix = value
+
+@Bot.command()
+async def user(ctx, member: dicord.Member):
+	emb = discrod.Embed(title = str(member), description = str(member))
+	emb.colour = member.top_role.colour
+	emb.add_field(name = 'Username', value = member.name)
+	emb.set_thumbnail(member.avatar_url)
+	emb.set_footer(text = f'Caused by {ctx.autor}', icon_url = ctx.autor.avatar_url)
+	await ctx.send(embed = emb)
+	
 	
 @Bot.event
 async def on_ready():
