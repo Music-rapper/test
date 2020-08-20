@@ -21,7 +21,8 @@ async def roles(ctx, member: discord.Member):
 	
 @Bot.command()
 asycn def role_id(ctx, member: discord.Member):
-	roles_list = f"{member.roles}"
+	roles_list = ''
+	roles_list += f"{member.roles}"
 	await ctx.send(roles_list)
 	
 @Bot.command()
