@@ -18,7 +18,7 @@ async def prefix(ctx, value):
 
 @Bot.command()
 async def user(ctx, member: dicord.Member):
-	emb = discrod.Embed(title = str(member), description = str(member))
+	emb = discrod.Embed(title = str(member))
 	emb.colour = member.top_role.colour
 	emb.add_field(name = 'Username', value = member.name)
 	emb.set_thumbnail(member.avatar_url)
