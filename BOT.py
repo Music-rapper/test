@@ -19,8 +19,8 @@ async def prefix(ctx, value):
 @Bot.command()
 async def user(ctx, member: discord.Member):
 	emb = discord.Embed(title = str(member), description = member.mention, color = member.top_role.color)
-	emb.add_field(name = 'Id', value = member.id, inline = False)
-	emb.set_thumbnail(member.avatar_url)
+	emb.add_field(name = "ID", value = member.id, inline = False)
+	emb.set_thumbnail(url = member.avatar_url)
 	emb.set_footer(text = f'Caused by:{str(ctx.author)}', icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = emb)
 	
