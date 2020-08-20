@@ -14,7 +14,10 @@ async def hello(ctx):
 	
 @Bot.command()
 async def roles(ctx, member: discord.Member):
-	await ctx.send(member.roles)
+	roles = ''
+	for role in member.roles:
+		roles += member.roles[role]
+	await ctx.send(roles)
 
 @Bot.command()
 async def user(ctx, member: discord.Member):
@@ -26,10 +29,6 @@ async def user(ctx, member: discord.Member):
         	emb.add_field(name = "Highest role", value = member.top_role, inline = False)
     	else:
         	emb.add_field(name = "Highest role", value = member.top_role.mention, inline = False)
-	role_list = ''
-	for roles in member.roles:
-		role_list += member.roles[roles]
-	emb.add_field(name = 'Roles', value = role_list, inline = False)
     	emb.set_thumbnail(url = member.avatar_url)
     	emb.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
     	await ctx.send(embed = emb)
