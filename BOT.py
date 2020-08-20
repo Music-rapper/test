@@ -14,8 +14,11 @@ async def hello(ctx):
 	
 @Bot.command()
 async def roles(ctx, member: discord.Member):
+	role_list = ''
 	for i in range(0, len(member.roles)):
-		await ctx.send(member.roles[i])
+		role_list += member.roles[i]
+		role_lsit += ' '
+	await ctx.send(role_list)
 
 @Bot.command()
 async def user(ctx, member: discord.Member):
