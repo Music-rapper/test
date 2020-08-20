@@ -23,7 +23,7 @@ async def user(ctx, member: discord.Member):
 	roles = member.roles
    	emb.set_thumbnail(url = member.avatar_url)
 	emb.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
-    	await ctx.send(roles, embed = emb)	
+    	await ctx.send(content = roles, embed = emb)	
 	
 @Bot.event
 async def on_ready():
