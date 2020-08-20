@@ -20,6 +20,15 @@ async def roles(ctx, member: discord.Member):
 	await ctx.send(role_list)
 
 @Bot.command()
+asycn def role_id(ctx, member: discord.Member):
+	for i in range(0, len(memeber.roles)-1):
+		if member.roles[i] == 'd':
+			start = i + 1
+			return
+	role_id = int(member_roles[start:start + 18])
+	await ctx.send(role_id)
+	
+@Bot.command()
 async def user(ctx, member: discord.Member):
     	emb = discord.Embed(title = str(member), description = member.mention, color = member.top_role.color)
     	emb.add_field(name = "ID", value = member.id, inline = False)
