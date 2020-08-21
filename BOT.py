@@ -22,7 +22,7 @@ async def roles(ctx, member: discord.Member):
 @Bot.command()
 async def role(ctx, member: discord.Member):
 	role = f"{member.roles}"
-	await ctx.send(role[1:2])
+	await ctx.send(role[8:25])
 	
 @Bot.command()
 async def user(ctx, member: discord.Member):
