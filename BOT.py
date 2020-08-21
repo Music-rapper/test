@@ -13,23 +13,12 @@ async def hello(ctx):
     	await ctx.send(f"Hello {ctx.author.mention}")
 	
 @Bot.command()
-async def roles(ctx, member: discord.Member):
-	role_list = ''
-	for i in range(0, len(member.roles)):
-		role_list += f'{member.roles[i]} '
-	await ctx.send(role_list)
-
-@Bot.command()
-async def role(ctx, member: discord.Member):
-	role = f"{member.roles}"
-	await ctx.send(role[10:28])
-	
-@Bot.command()
 async def user(ctx, member: discord.Member):
     	emb = discord.Embed(title = str(member), description = member.mention, color = member.top_role.color)
     	emb.add_field(name = "ID", value = member.id, inline = False)
     	emb.add_field(name = "Joined server at", value = str(member.joined_at)[:19], inline = False)
     	emb.add_field(name = "Created account at", value = str(member.created_at)[:19], inline = False)
+	emb.add_field(name = 'Roles', value = ' '.join(member.roles), inline = False)
     	if member.top_role == member.roles[0]:
         	emb.add_field(name = "Highest role", value = member.top_role, inline = False)
     	else:
