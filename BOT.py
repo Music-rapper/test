@@ -22,6 +22,15 @@ async def roles(ctx, member: discord.Member):
 @Bot.command()
 async def role(ctx, member: discord.Member):
 	role = f"{member.roles}"
+    	role_mention = []
+    	if len(role) > 47:
+            	role_mention[0] = [member.roles[0]]
+            	for i in range(47, len(info)):
+                    	if info[i] == 'd':
+                            	role_id = int(info[i + 2 : i + 20])
+                            	role_mentiona.ppend(f'<@&{role_id}>')
+		else:
+		    role_mention.append(member.roles[0])
 	await ctx.send(role[8:25])
 	
 @Bot.command()
