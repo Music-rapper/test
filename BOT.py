@@ -10,8 +10,8 @@ Bot = commands.Bot(command_prefix = prefix)
 
 @Bot.command()
 async def say(ctx, channel: discord.TextChannel, text):
-	if channel == '':
-		await ctx.send(text)
+	if channel == None:
+		await ctx.send('Hello')
 	else:
 		await channel.send(text)
 
