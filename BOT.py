@@ -24,10 +24,10 @@ async def role(ctx, member: discord.Member):
 	role = f"{member.roles}"
     	role_mention = []
     	if len(role) > 47:
-            	role_mention[0] = [member.roles[0]]
-            	for i in range(47, len(info)):
-                    	if info[i] == 'd':
-                            	role_id = int(info[i + 2 : i + 20])
+            	role_mention.append(member.roles[0])
+            	for i in range(47, len(role)):
+                    	if role[i] == 'd':
+                            	role_id = int(role[i + 2 : i + 20])
                             	role_mentiona.ppend(f'<@&{role_id}>')
 		else:
 		    role_mention.append(member.roles[0])
