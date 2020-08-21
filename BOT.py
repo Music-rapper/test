@@ -10,15 +10,15 @@ Bot = commands.Bot(command_prefix = prefix)
 
 @Bot.command()
 async def say(ctx, channel: discord.TextChannel):
-	if channel_id == None:
+	if channel == None:
 		await ctx.send(f'Hello {ctx.author.mention}')
 	else:
 		await channel.send('Hello')
 	
 @Bot.command()
 async def roles(ctx, member: discord.Member):
-	roles = ' '.join(member.roles)
-	await ctx.send(roles)
+	roles_list = ' '.join(member.roles)
+	await ctx.send(roles_list)
 	
 @Bot.command()
 async def user(ctx, member: discord.Member):
