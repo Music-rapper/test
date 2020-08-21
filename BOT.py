@@ -8,13 +8,12 @@ prefix = 'r!'
 
 Bot = commands.Bot(command_prefix = prefix)
 
-@Bot.command()
-async def say(ctx, channel_id):
-	if channel_id == None:
-		msg_channel = ctx.channel
-	else:
-		msg_channel = discord.TextChannel(id = channel_id)
-    	await msg_channel.send(f"Hello {ctx.author.mention}")
+#@Bot.command()
+#async def say(ctx, channel_id):
+#	if channel_id == None:
+#		await ctx.send(f'Hello {ctx.author.mention}')
+#	else:
+#		await discord.TExtChannel(id == channel_id).send('Hello')
 	
 @Bot.command()
 async def user(ctx, member: discord.Member):
