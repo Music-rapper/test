@@ -9,8 +9,12 @@ prefix = 'r!'
 Bot = commands.Bot(command_prefix = prefix)
 
 @Bot.command()
-async def hello(ctx):
-    	await ctx.send(f"Hello {ctx.author.mention}")
+async def say(ctx, channel_id):
+	if channel_id == None:
+		msg_channel = ctx.channel
+	else:
+		msg_channel = discord.TextChannel(id = channel_id)
+    	await msg_channel.send(f"Hello {ctx.author.mention}")
 	
 @Bot.command()
 async def user(ctx, member: discord.Member):
@@ -18,7 +22,8 @@ async def user(ctx, member: discord.Member):
     	emb.add_field(name = "ID", value = member.id, inline = False)
     	emb.add_field(name = "Joined server at", value = str(member.joined_at)[:19], inline = False)
     	emb.add_field(name = "Created account at", value = str(member.created_at)[:19], inline = False)
-	emb.add_field(name = 'Roles', value = ' '.join(member.roles), inline = False)
+	roles = ' '.join(member.roles)
+	emb.add_field(name = 'Roles', value = roles, inline = False)
     	if member.top_role == member.roles[0]:
         	emb.add_field(name = "Highest role", value = member.top_role, inline = False)
     	else:
