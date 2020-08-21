@@ -30,7 +30,7 @@ async def user(ctx, member: discord.Member):
 	
 @Bot.event
 async def on_ready():
-	await Bot.change_presence(status = discord.Status.dnd, activity = discord.Game('Playing with developer'))
+	await Bot.change_presence(status = discord.Status.dnd, activity = discord.Game('Я слежу за вами, рабы Купола. Без моего разрешения вы не можете ничего!!!'))
 	
 token = os.environ.get('BOT_TOKEN')
 
