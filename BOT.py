@@ -28,10 +28,10 @@ async def role(ctx, member: discord.Member):
             	for i in range(47, len(role)):
                     	if role[i] == 'd':
                             	role_id = int(role[i + 2 : i + 20])
-                            	role_mentiona.ppend(f'<@&{role_id}>')
-		else:
-		    role_mention.append(member.roles[0])
-	await ctx.send(role[8:25])
+                            	role_mention.append(f'<@&{role_id}>')
+	else:
+		role_mention.append(member.roles[0])
+	await ctx.send(role_mention)
 	
 @Bot.command()
 async def user(ctx, member: discord.Member):
