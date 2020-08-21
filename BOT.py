@@ -9,16 +9,11 @@ prefix = 'r!'
 Bot = commands.Bot(command_prefix = prefix)
 
 @Bot.command()
-async def say(ctx, channel: discord.TextChannel):
-	if channel == None:
+async def say(ctx, channel: discord.TextChannel, *text):
+	if channel == '':
 		await ctx.send(f'Hello {ctx.author.mention}')
 	else:
-		await channel.send('Hello')
-	
-@Bot.command()
-async def roles(ctx, member: discord.Member):
-	roles_list = ' '.join(member.roles)
-	await ctx.send(roles_list)
+		await channel.send(text)
 	
 @Bot.command()
 async def user(ctx, member: discord.Member):
