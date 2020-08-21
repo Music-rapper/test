@@ -9,9 +9,9 @@ prefix = 'r!'
 Bot = commands.Bot(command_prefix = prefix)
 
 @Bot.command()
-async def say(ctx, channel: discord.TextChannel, text*):
-	if channel == '':
-		await ctx.send(f'Hello {ctx.author.mention}')
+async def say(ctx, channel: discord.TextChannel, text):
+	if channel == None:
+		await ctx.send(text)
 	else:
 		await channel.send(text)
 
