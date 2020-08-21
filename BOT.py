@@ -23,7 +23,7 @@ async def roles(ctx, member: discord.Member):
 async def role(ctx, member: discord.Member):
 	role = f"{member.roles}"
     	role_mention = []
-    	if len(role) > 47:
+    	if len(role) > 48:
             	role_mention.append(member.roles[0])
             	for i in range(47, len(role)):
                     	if role[i] == 'd':
