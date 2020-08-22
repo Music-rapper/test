@@ -10,10 +10,7 @@ Bot = commands.Bot(command_prefix = prefix)
 
 @Bot.command()
 async def say(ctx, channel: discord.TextChannel, *word):
-	if channel == '':
-		await ctx.send(word)
-	else:
-		await channel.send(word)
+	await channel.send(word)
 	
 @Bot.command()
 async def user(ctx, member: discord.Member):
@@ -28,8 +25,6 @@ async def user(ctx, member: discord.Member):
     	emb.set_thumbnail(url = member.avatar_url)
     	emb.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
     	await ctx.send(embed = emb)
-	
-#tEST
 	
 @Bot.event
 async def on_ready():
