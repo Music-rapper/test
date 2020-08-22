@@ -11,7 +11,10 @@ Bot = commands.Bot(command_prefix = prefix)
 @Bot.command()
 async def say(ctx, channel: discord.TextChannel, *word):
 	if channel != discord.TextChannel:
-		await ctx.send(channel + ' ' + word)
+		if word != None:
+			await ctx.send(str(channel) + ' ' + word)
+		else:
+			await ctx.send(str(channel))
 	await channel.send(word)
 	
 @Bot.command()
