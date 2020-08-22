@@ -10,14 +10,12 @@ Bot = commands.Bot(command_prefix = prefix)
 
 @Bot.command()
 async def say(ctx, channel: discord.TextChannel, *, word):
-	if channel != discord.TextChannel:
-		channel = ctx.channel
 	await channel.send(word)
 
 @Bot.command()
 async def roles(ctx, member: discord.Member):
-	roles_list = ' '.join(member.roles)
-	await ctx.send(roles_list)
+	role_list = ' '.join(member.roles)
+	await ctx.send(role_list)
 	
 @Bot.event
 async def on_ready():
