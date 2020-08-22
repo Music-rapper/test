@@ -16,7 +16,7 @@ async def say(ctx, channel, *word):
 		else:
 			await ctx.send(channel)
 	else:
-	await channel.send(word)
+		await channel.send(word)
 	
 @Bot.command()
 async def user(ctx, member: discord.Member):
