@@ -10,7 +10,7 @@ Bot = commands.Bot(command_prefix = prefix)
 
 @Bot.command()
 async def say(ctx, channel: discord.TextChannel, word):
-	await channel.send(word)
+	await channel.send(' '.join(word))
 	
 @Bot.command()
 async def user(ctx, member: discord.Member):
