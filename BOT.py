@@ -33,6 +33,7 @@ async def user(ctx, member: discord.Member):
     emb.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
     await ctx.send(embed = emb)
 	
+#tEST
 	
 @Bot.event
 async def on_ready():
