@@ -20,7 +20,8 @@ async def roles(ctx, member: discord.Member):
 			roles_mention.append(member.roles[i].name)
 		else:
 			roles_mention.append(member.roles[i].mention)
-	await ctx.send(roles_mention)
+	mention = roles_mention[0]
+	await ctx.send(mention)
 	
 @Bot.event
 async def on_ready():
