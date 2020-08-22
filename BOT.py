@@ -13,7 +13,7 @@ async def say(ctx, channel: discord.TextChannel, *text):
 	await channel.send(text)
 
 @Bot.command()
-asycn def role_id(ctx, member: discord.Member):
+async def role_id(ctx, member: discord.Member):
 	roles = f"{member.roles}"
     	for i in range(0, len(roles)-1):
         	if roles[i] == 'd':
