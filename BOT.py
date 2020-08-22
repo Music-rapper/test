@@ -9,8 +9,12 @@ prefix = 'r!'
 Bot = commands.Bot(command_prefix = prefix)
 
 @Bot.command()
-async def say(ctx, channel: discord.TextChannel, text):
+async def say(ctx, channel: discord.TextChannel, *text):
 	await channel.send(text)
+		
+@Bot.command()
+async def say(ctx, *text):
+	await ctx.send(text)
 		
 @Bot.command()
 async def user(ctx, member: discord.Member):
