@@ -13,10 +13,6 @@ async def say(ctx, channel: discord.TextChannel, *text):
 	await channel.send(text)
 		
 @Bot.command()
-async def say(ctx, *text):
-	await ctx.send(text)
-		
-@Bot.command()
 async def user(ctx, member: discord.Member):
     	emb = discord.Embed(title = str(member), description = member.mention, color = member.top_role.color)
     	emb.add_field(name = "ID", value = member.id, inline = False)
