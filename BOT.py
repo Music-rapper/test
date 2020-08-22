@@ -14,6 +14,7 @@ async def say(ctx, channel: discord.TextChannel, *, word):
 
 @Bot.command()
 async def roles(ctx, member: discord.Member):
+	role_list = ''
 	for i in range(0, len(member.roles)):
 		role_list += member.roles[i]
 		role_list += ' '
