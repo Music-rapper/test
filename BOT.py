@@ -9,13 +9,17 @@ prefix = 'r!'
 Bot = commands.Bot(command_prefix = prefix)
 
 @Bot.command()
-async def say(ctx, *text):
-	await ctx.send(text)
-
-@Bot.command()
 async def say(ctx, channel: discord.TextChannel, *text):
 	await channel.send(text)
-		
+
+@Bot.command()
+asycn def role_id(ctx, member: discord.Member):
+	roles = f"{member.roles}"
+    	for i in range(0, len(roles)-1):
+        	if roles[i] == 'd':
+			role_id = int(roles[i + 1:i + 19])
+			await ctx.send(role_id)
+	
 @Bot.command()
 async def user(ctx, member: discord.Member):
     	emb = discord.Embed(title = str(member), description = member.mention, color = member.top_role.color)
