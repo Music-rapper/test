@@ -14,13 +14,10 @@ async def say(ctx, channel: discord.TextChannel, *, word):
 
 @Bot.command()
 async def roles(ctx, member: discord.Member):
-	roles_mention = []
+	mention = member.roles[i].name
 	for i in range(0, len(member.roles)):
-		if i == 0:
-			roles_mention.append(member.roles[i].name)
-		else:
-			roles_mention.append(member.roles[i].mention)
-	mention = roles_mention[0]
+		mention += ' '
+		mention += member.roles[i].mention
 	await ctx.send(mention)
 	
 @Bot.event
