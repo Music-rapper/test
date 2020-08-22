@@ -9,6 +9,10 @@ prefix = 'r!'
 Bot = commands.Bot(command_prefix = prefix)
 
 @Bot.command()
+async def speak(ctx, *content):
+	ctx.send(str(content))
+
+@Bot.command()
 async def say(ctx, channel: discord.TextChannel, *text):
 	await channel.send(text)
 		
