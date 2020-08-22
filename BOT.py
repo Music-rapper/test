@@ -17,7 +17,7 @@ async def roles(ctx, member: discord.Member):
 	roles_mention = []
 	for i in range(0, len(member.roles)):
 		if i == 0:
-			roles_mention.append(member.roles[i])
+			roles_mention.append(member.roles[i].name)
 		else:
 			roles_mention.append(member.roles[i].mention)
 	await ctx.send(roles_mention)
