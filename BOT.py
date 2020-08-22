@@ -11,14 +11,6 @@ Bot = commands.Bot(command_prefix = prefix)
 @Bot.command()
 async def say(ctx, channel: discord.TextChannel, *, word):
 	await channel.send(word)
-
-@Bot.command()
-async def roles(ctx, member: discord.Member):
-	mention = member.roles[0].name
-	for i in range(1, len(member.roles)):
-		mention += ' '
-		mention += member.roles[i].mention
-	await ctx.send(mention)
 	
 @Bot.event
 async def on_ready():
