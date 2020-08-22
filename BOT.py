@@ -16,9 +16,7 @@ async def say(ctx, channel: discord.TextChannel, *, word):
 async def roles(ctx, member: discord.Member):
 	role_list = ''
 	for i in range(0, len(member.roles)):
-		role_list += member.roles[i]
-		role_list += ' '
-	await ctx.send(role_list)
+		await ctx.send(member.roles[i])
 	
 @Bot.event
 async def on_ready():
