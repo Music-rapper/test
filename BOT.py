@@ -15,7 +15,8 @@ async def channels(ctx):
 
 @Bot.command()
 async def server(ctx):
-	await ctx.send(discord.Guild.name)
+	guild = ctx.Guild
+	await ctx.send(str(guild))
 	
 '''
 @Bot.command()
