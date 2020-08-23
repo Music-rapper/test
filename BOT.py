@@ -10,26 +10,28 @@ Bot = commands.Bot(command_prefix = prefix)
 
 @Bot.command()
 async def say(ctx, channel = None, *, word = None):
+	stop = False
 	guild = ctx.guild
 	channel_list = guild.text_channels
 	for i in range(0, len(channel_list)):
 		if channel == channel_list[i].name or channel == channel_list[i].id or channel == channel_list[i].mention:
 			if word == None:
-				channel = channel_list[i]
+				stop = True
 				await ctx.send('You don\'t wrote what to say')
 			else:
+				stop = True
 				channel = channel_list[i]
 				await channel.send(word)
 	else:
-		if channel != channel_list[i].name or channel != channel_list[i].id or channel != channel_list[i].mention:
 			if channel == None:
 				await ctx.send('You don\'t wrote what to say')
 			else:
-				if word == None:
-					await ctx.send(channel)
-				else:
-					await ctx.send(channel + f' {word}')
-	
+				if stop == False:
+					if word == None:
+						await ctx.send(channel)
+					else:
+						await ctx.send(channel + f' {word}')
+
 @Bot.command()
 async def user(ctx, member: discord.Member):
 	emb = discord.Embed(title = str(member), description = member.mention, color = member.top_role.color)
