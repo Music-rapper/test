@@ -6,19 +6,7 @@ import time
 
 prefix = 'r!'
 
-Bot = commands.Bot(command_prefix = prefix)
-
-@Bot.command()
-async def channels(ctx):
-	guild = ctx.guild
-	channel_list = guild.text_channels
-	await ctx.send(channel_list)
-
-@Bot.command()
-async def server(ctx):
-	guild = ctx.guild
-	await ctx.send(str(guild))
-	
+Bot = commands.Bot(command_prefix = prefix)	
 
 @Bot.command()
 async def say(ctx, channel, *, word):
@@ -28,6 +16,8 @@ async def say(ctx, channel, *, word):
 		if channel == channel_list[i].name or channel == channel_list[i].id or channel == channel_list[i].mention:
 			channel = channel_list[i]
 			await channel.send(word)
+	else:
+		await ctx.send(channel + f' {word}')
 
 	
 @Bot.command()
