@@ -34,7 +34,7 @@ async def server(ctx):
 	s_e = discord.Embed(title = server.name, description = server.description, color = discord.Color.red())
 	s_e.add_field(name = "Server ID", value = server.id)
 	s_e.add_field(name = "Server Owner", value = server.owner, inline = False)
-	members = f':online :offline: {str(len(server.members))} Members'
+	members = f':green_circle :black_circle: {str(len(server.members))} Members'
 	s_e.add_field(name = "Members", value = members, inline = False)
 	s_e.set_thumbnail(url = server.icon_url)
 	s_e.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
