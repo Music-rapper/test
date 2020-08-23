@@ -15,6 +15,7 @@ async def join(ctx):
 		await ctx.send('You need to be in a voice chat to use that')
 	else:
 		await voice.channel.connect(timeout = 5)
+		await ctx.send(voice.endpoint)
 
 @Bot.command()
 async def say(ctx, channel = None, *, word = None):
