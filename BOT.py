@@ -15,6 +15,7 @@ async def say(ctx, channel = None, *, word = None):
 	for i in range(0, len(channel_list)):
 		if channel == channel_list[i].name or channel == channel_list[i].id or channel == channel_list[i].mention:
 			if word == None:
+				channel = channel_list[i]
 				await ctx.send('You don\'t wrote what to say')
 			else:
 				channel = channel_list[i]
