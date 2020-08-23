@@ -25,6 +25,15 @@ async def leave(ctx):
 		guild = ctx.guild
 		voice_client = guild.voice_client
 		await voice_client.disconnect()
+
+@Bot.command()
+async def play(ctx, track = None):
+	if track == None:
+		await ctx.send('You nedd to write what to play.')
+	else:
+		guild = ctx.guild
+		voice_client = guild.voice_client
+		voice_client.play(track)
 		
 @Bot.command()
 async def say(ctx, channel = None, *, word = None):
