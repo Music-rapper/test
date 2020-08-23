@@ -6,7 +6,14 @@ import time
 
 prefix = 'r!'
 
-Bot = commands.Bot(command_prefix = prefix)	
+Bot = commands.Bot(command_prefix = prefix)
+
+@Bot.command()
+async def join(ctx):
+	guild = ctx.guild
+	voice_channel_list = guild.voice_channels
+	voice_channel = voice_channel_list[0]
+	await voice_channel.connect()
 
 @Bot.command()
 async def say(ctx, channel = None, *, word = None):
