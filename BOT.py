@@ -27,7 +27,7 @@ async def leave(ctx):
 		await voice_client.disconnect()
 
 @Bot.command()
-async def play(ctx, track = None):
+async def play(ctx, track: discord.AudioSource = None):
 	if track == None:
 		await ctx.send('You nedd to write what to play.')
 	else:
