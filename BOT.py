@@ -15,7 +15,7 @@ async def join(ctx):
 		await ctx.send('You need to be in a voice chat to use that')
 	else:
 		client = await voice.channel.connect(timeout = 5)
-		await ctx.send(client.session_id)
+		await ctx.send(client.session_id + ' ' + client.guild)
 
 @Bot.command()
 async def leave(ctx):
