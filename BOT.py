@@ -14,11 +14,16 @@ async def say(ctx, channel, *, word = None):
 	channel_list = guild.text_channels
 	for i in range(0, len(channel_list)):
 		if channel == channel_list[i].name or channel == channel_list[i].id or channel == channel_list[i].mention:
-			channel = channel_list[i]
-			await channel.send(word)
+			if word == None:
+				await ctx.send('You don\'t wrote what to say')
+			else:
+				channel = channel_list[i]
+				await channel.send(word)
 	else:
-		await ctx.send(channel + f' {word}')
-
+		if word == None:
+			await ctx.send('You don\'t wrote what to say')
+		else:
+			await ctx.send(channel + f' {word}')
 	
 @Bot.command()
 async def user(ctx, member: discord.Member):
