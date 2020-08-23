@@ -19,17 +19,15 @@ async def server(ctx):
 	guild = ctx.guild
 	await ctx.send(str(guild))
 	
-'''
+
 @Bot.command()
-async def say(ctx, channel, *, word = None):
-	if channel in channel_id_list or channel == :
-		await channel.send(word)
-	else:
-		if word != None:
-			await ctx.send(str(channel) + f' {word}')
-		else:
-			await ctx.send(channel)
-'''
+async def say(ctx, channel, *, word):
+	guild = ctx.guild
+	channel_list = guild.text_channels
+	for i in range(0, len(channel_list)):
+		if channel == channel_list[i].name or channel == channel_list[i].id or channel == channel_list[i].mention:
+			await channel.send(word)
+
 	
 @Bot.command()
 async def user(ctx, member: discord.Member):
