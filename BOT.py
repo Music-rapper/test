@@ -26,7 +26,7 @@ async def say(ctx, channel, *, word):
 	channel_list = guild.text_channels
 	for i in range(0, len(channel_list)):
 		if channel == channel_list[i].name or channel == channel_list[i].id or channel == channel_list[i].mention:
-			channel = discord.TextChannel
+			channel = channel_list[i]
 			await channel.send(word)
 
 	
