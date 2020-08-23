@@ -39,7 +39,7 @@ async def server(ctx):
 	s_e.add_field(name = "Server ID", value = server.id)
 	s_e.add_field(name = "Server Owner", value = server.owner)
 	members = f'<:online:747121287893352509>   <:offline:747121312262258768> {str(len(server.members))} Members'
-	s_e.add_field(name = "Members", value = members, inline = False)
+	s_e.add_field(name = "Members", value = '<:online:747121287893352509>', inline = False)
 	s_e.set_thumbnail(url = server.icon_url)
 	s_e.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = s_e)
