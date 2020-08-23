@@ -9,7 +9,7 @@ prefix = 'r!'
 Bot = commands.Bot(command_prefix = prefix)	
 
 @Bot.command()
-async def say(ctx, channel, *, word):
+async def say(ctx, channel, *, word = None):
 	guild = ctx.guild
 	channel_list = guild.text_channels
 	for i in range(0, len(channel_list)):
