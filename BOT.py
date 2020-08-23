@@ -14,6 +14,7 @@ async def join(ctx):
 	voice_channel_list = guild.voice_channels
 	voice_channel = voice_channel_list[0]
 	await voice_channel.connect()
+	await ctx.send(voice_channel.mention)
 
 @Bot.command()
 async def say(ctx, channel = None, *, word = None):
