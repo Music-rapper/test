@@ -27,13 +27,13 @@ async def leave(ctx):
 		await voice_client.disconnect()
 
 @Bot.command()
-async def play(ctx, track):
+async def play(ctx, track: discord.AudioSource):
 	if track == None:
 		await ctx.send('You nedd to write what to play.')
 	else:
 		guild = ctx.guild
 		voice_client = guild.voice_client
-		track = discord.AudioSource(track)
+		track = discord.AudioSource
 		voice_client.play(track)
 		
 @Bot.command()
