@@ -22,9 +22,9 @@ async def leave(ctx):
 	if voice == None:
 		await ctx.send('You need to be in a voice chat to use that')
 	else:
-		guild = ctx.message.guild
+		guild = ctx.guild
 		voice_client = guild.voice_client
-		voice_client.disconnect()
+		await voice_client.disconnect()
 		
 @Bot.command()
 async def say(ctx, channel = None, *, word = None):
