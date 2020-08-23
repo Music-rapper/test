@@ -19,12 +19,12 @@ async def join(ctx):
 		await ctx.send(client_id)
 
 @Bot.command()
-async def leave(ctx):
+async def play(ctx, track):
 	voice = ctx.author.voice
 	if voice == None:
 		await ctx.send('You need to be in a voice chat to use that')
 	else:
-		await disconnect()
+		play(track)
 
 @Bot.command()
 async def say(ctx, channel = None, *, word = None):
