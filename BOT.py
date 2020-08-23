@@ -9,7 +9,7 @@ prefix = 'r!'
 Bot = commands.Bot(command_prefix = prefix)	
 
 @Bot.command()
-async def say(ctx, channel, *, word = None):
+async def say(ctx, channel = None, *, word = None):
 	guild = ctx.guild
 	channel_list = guild.text_channels
 	for i in range(0, len(channel_list)):
@@ -20,10 +20,14 @@ async def say(ctx, channel, *, word = None):
 				channel = channel_list[i]
 				await channel.send(word)
 	else:
-		if word == None:
-			await ctx.send('You don\'t wrote what to say')
-		else:
-			await ctx.send(channel + f' {word}')
+		if channel != channel_list[i].name or channel != channel_list[i].id or channel != channel_list[i].mention:
+			if channel == None:
+				await ctx.send('You don\'t wrote what to say')
+			else:
+				if word == None:
+					await ctx.send(channel)
+				else:
+					await ctx.send(channel + f' {word}')
 	
 @Bot.command()
 async def user(ctx, member: discord.Member):
