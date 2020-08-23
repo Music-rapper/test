@@ -33,7 +33,7 @@ async def play(ctx, track):
 	else:
 		guild = ctx.guild
 		voice_client = guild.voice_client
-		track = discord.FFmpegAudio(track)
+		track = discord.AudioSource(track)
 		voice_client.play(track)
 		
 @Bot.command()
