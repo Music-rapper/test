@@ -10,12 +10,13 @@ Bot = commands.Bot(command_prefix = prefix)
 
 @Bot.command()
 async def channels(ctx):
-	channel_list = discord.Guild.text_channels
+	guild = ctx.guild
+	channel_list = guild.text_channels
 	await ctx.send(channel_list)
 
 @Bot.command()
 async def server(ctx):
-	guild = ctx.Guild
+	guild = ctx.guild
 	await ctx.send(str(guild))
 	
 '''
