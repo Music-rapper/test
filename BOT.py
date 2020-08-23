@@ -35,11 +35,15 @@ async def emoji(ctx, emoji:discord.Emoji):
 @Bot.command()
 async def server(ctx):
 	server = ctx.guild
+	online_members = 0
 	s_e = discord.Embed(title = server.name, description = server.description, color = discord.Color.red())
 	s_e.add_field(name = "Server ID", value = server.id)
 	s_e.add_field(name = "Server Owner", value = server.owner)
-	members = f'<:online:747121287893352509>   <:offline:747121312262258768> {str(len(server.members))} Members'
-	s_e.add_field(name = "Members", value = '<:online:747121287893352509>', inline = False)
+	for i in range(0, len(server.members)):
+		if server.members[i].status == discord.Status.online or server.members[i].status == discord.Status.idle or server.members[i].status == discord.Status.dnd:
+			online_members += 1
+	members = f'<:online:747121287893352509> {str(online_members)} Online    <:offline:747121312262258768> {str(len(server.members))} Members'
+	s_e.add_field(name = "Members", value = members, inline = False)
 	s_e.set_thumbnail(url = server.icon_url)
 	s_e.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = s_e)
