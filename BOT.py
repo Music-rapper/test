@@ -14,7 +14,7 @@ async def channels(ctx):
 	await ctx.send(channel_list)
 
 @Bot.command()
-async def server(cxt):
+async def server(ctx):
 	await ctx.send(discord.Guild.name)
 	
 '''
