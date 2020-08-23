@@ -27,7 +27,11 @@ async def leave(ctx):
 		voice_client = guild.voice_client
 		await voice_client.disconnect()
 '''
-		
+
+@Bot.command()
+async def emoji(ctx, emoji:discord.Emoji):
+	await ctx.send(emoji.id)
+
 @Bot.command()
 async def server(ctx):
 	server = ctx.guild
