@@ -8,9 +8,11 @@ prefix = 'r!'
 
 Bot = commands.Bot(command_prefix = prefix)
 
+channel_id_list = ['646004417052540952', '651494192370941984', '676425238807838783', '745989997001441280', '746769414560415754']
+
 @Bot.command()
 async def say(ctx, channel: discord.TextChannel, *, word = None):
-	if channel.mention[0:2] == '<#':
+	if channel.id in channel_id_list :
 		await channel.send(word)
 	else:
 		if word != None:
