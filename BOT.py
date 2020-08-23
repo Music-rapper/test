@@ -14,11 +14,12 @@ async def join(ctx):
 	voice_channel_list = guild.voice_channels
 	voice_channel = voice_channel_list[0]
 	await voice_channel.connect()
-	voice = ctx.author.voice.channel
+	voice = ctx.author.voice
 	if voice == None:
 		await ctx.send('You need to be in a voice chat to use that')
 	else:
-		await ctx.send(voice)
+		voice_channel = voice.channel
+		await ctx.send(voice_channel)
 
 @Bot.command()
 async def say(ctx, channel = None, *, word = None):
