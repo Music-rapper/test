@@ -13,7 +13,7 @@ async def say(ctx, channel: discord.TextChannel, *, word):
 	if channel.mention == True:
 		await channel.send(word)
 	else:
-		if word != ''
+		if word != '':
 			await ctx.send(channel + f' {word}')
 		else:
 			await ctx.send(channel)
