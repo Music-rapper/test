@@ -10,19 +10,11 @@ Bot = commands.Bot(command_prefix = prefix)
 
 @Bot.command()
 async def join(ctx):
-	guild = ctx.guild
-	voice_channel_list = guild.voice_channels
-	voice_channel = voice_channel_list[0]
-	await voice_channel.connect(timeout = 5)
-		
-@Bot.command()
-async def test(ctx):
 	voice = ctx.author.voice
 	if voice == None:
 		await ctx.send('You need to be in a voice chat to use that')
 	else:
-		voice_channel = voice.channel
-		await ctx.send(voice_channel)
+		await voice.channel.connect(timeout = 5)
 
 @Bot.command()
 async def say(ctx, channel = None, *, word = None):
