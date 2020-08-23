@@ -13,7 +13,7 @@ async def join(ctx):
 	guild = ctx.guild
 	voice_channel_list = guild.voice_channels
 	voice_channel = voice_channel_list[0]
-	await voice_channel.connect(5)
+	await voice_channel.connect(timeout = 5)
 		
 @Bot.command()
 async def test(ctx):
