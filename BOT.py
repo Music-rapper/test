@@ -13,6 +13,10 @@ async def channels(ctx):
 	channel_list = discord.Guild.text_channels
 	await ctx.send(channel_list)
 
+@Bot.command()
+async def server(cxt):
+	await ctx.send(discord.Guild.name)
+	
 '''
 @Bot.command()
 async def say(ctx, channel, *, word = None):
