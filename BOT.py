@@ -20,6 +20,15 @@ async def join(ctx):
 	else:
 		voice_channel = voice.channel
 		await ctx.send(voice_channel)
+		
+@Bot.command()
+async def test(ctx):
+	voice = ctx.author.voice
+	if voice == None:
+		await ctx.send('You need to be in a voice chat to use that')
+	else:
+		voice_channel = voice.channel
+		await ctx.send(voice_channel)
 
 @Bot.command()
 async def say(ctx, channel = None, *, word = None):
