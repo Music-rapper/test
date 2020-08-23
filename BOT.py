@@ -9,11 +9,11 @@ prefix = 'r!'
 Bot = commands.Bot(command_prefix = prefix)
 
 @Bot.command()
-async def say(ctx, channel: discord.TextChannel, *, word):
-	if channel.mention == discord.TextChannel.mention:
+async def say(ctx, channel: discord.TextChannel, *, word = None):
+	if channel.mention[0:2] == '<#':
 		await channel.send(word)
 	else:
-		if word != '':
+		if word != None:
 			await ctx.send(str(channel) + f' {word}')
 		else:
 			await ctx.send(channel)
