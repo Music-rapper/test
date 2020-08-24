@@ -46,13 +46,20 @@ async def server(ctx):
 	s_e.add_field(name = "Server ID", value = server.id)
 	s_e.add_field(name = "Server Owner", value = server.owner.mention)
 	for i in range(0, len(server.members)):
-		if server.members[i].status == discord.Status.online or server.members[i].status == discord.Status.idle or server.members[i].status == discord.Status.dnd:
+		if server.members[i].status == discord.Status.online:
 			if server.members[i].bot == False:
 				online_members += 1
+		elif server.members[i].status == discord.Status.idle:
+			if server.memberss[i].bot == False:
+				inactive_members += 1
+		elif server.members[i].status == discord.Status.dnd:
+			if server.memberss[i].bot == False:
+				busy_members += 1
 	for i in range(0, len(server.members)):
 		if server.members[i].bot == True:
 			bot_members += 1
-	members = f'<:online:747352635643920385> {online_members} Online<:transparent:747360968773730325><:offline:747355444250542141> {len(server.members) - bot_members} Members'
+	members = (f'<:online:747352635643920385> {online_members} Online<:transparent:747360968773730325><:idle:747490969984958544> {inactive_members} Inactive'
+		   +'<:transparent:747360968773730325><:dnd:747492056087134289> {busy_members} Busy<:transparent:747360968773730325><:offline:747355444250542141> {len(server.members) - bot_members} Members')
 	s_e.add_field(name = "Members", value = members, inline = False)
 	channels = f'<:textchannel:747403102650368032> {len(server.text_channels)} Text<:transparent:747360968773730325><:voicechannel:747410314630266960> {len(server.voice_channels)} Voice'
 	s_e.add_field(name = "Channels", value = channels, inline = False)
