@@ -46,9 +46,12 @@ async def server(ctx):
 	s_e.add_field(name = "Server ID", value = server.id)
 	s_e.add_field(name = "Server Owner", value = server.owner.mention)
 	for i in range(0, len(server.members)):
-		if server.members[i].status == discord.Status.online or server.members[i].status == discord.Status.idle or server.members[i].status == discord.Status.dnd:
+		if (server.members[i].status == discord.Status.online or server.members[i].status == discord.Status.idle
+		    or server.members[i].status == discord.Status.dnd or server.members[i].status = =discord.Status.invisible):
 			if server.members[i].bot == False:
 				online_members += 1
+		else:
+			await ctx.send(f'{server.members[i].mention] is offline')
 	for i in range(0, len(server.members)):
 		if server.members[i].bot == True:
 			bot_members += 1
