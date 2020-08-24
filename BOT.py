@@ -40,6 +40,8 @@ async def emoji(ctx, emoji:discord.Emoji):
 async def server(ctx):
 	server = ctx.guild
 	online_members = 0
+	inactive_members = 0
+	busy_members = 0
 	bot_members = 0
 	bans = await server.bans()
 	s_e = discord.Embed(title = server.name, description = server.description, color = discord.Color.green())
