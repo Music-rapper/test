@@ -30,13 +30,16 @@ async def leave(ctx):
 
 @Bot.command()
 async def emoji(ctx, emoji:discord.Emoji):
-	await ctx.send(emoji.id)
+	e_e = discord.Embed(title = emoji.name, color = discord.Color.green())
+	e_e.set_thumbnail(url = emoji.url)
+	e_e.set_footer(text = 'ID ' + emoji.id)
+	await ctx.send(embed = e_e)
 
 @Bot.command()
 async def server(ctx):
 	server = ctx.guild
 	online_members = 0
-	s_e = discord.Embed(title = server.name, description = server.description, color = discord.Color.red())
+	s_e = discord.Embed(title = server.name, description = server.description, color = discord.Color.dark_red())
 	s_e.add_field(name = "Server ID", value = server.id)
 	s_e.add_field(name = "Server Owner", value = server.owner)
 	for i in range(0, len(server.members)):
@@ -51,7 +54,7 @@ async def server(ctx):
 @Bot.event
 async def on_ready():
 	print('Bot is ready!')
-	await Bot.change_presence(status = discord.Status.dnd, activity = discord.Game('Хочется пошпехатся, а не с кем. О разработчик пошли потрахаемся.'))
+	await Bot.change_presence(status = discord.Status.dnd, activity = discord.Game('Хочется пошпехатся, а не с кем. О разработчик, пошли потрахаемся.'))
 	
 token = os.environ.get('BOT_TOKEN')
 
