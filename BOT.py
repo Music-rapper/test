@@ -57,7 +57,7 @@ async def server(ctx):
 	channels = f'<:textchannel:747403102650368032> {len(server.text_channels)} Text<:transparent:747360968773730325><:voicechannel:747410314630266960> {len(server.voice_channels)} Voice'
 	s_e.add_field(name = "Channels", value = channels, inline = False)
 	s_e.add_field(name = "Roles", value = len(server.roles))
-	s_e.add_field(name = "Emojis", value = len(server.emojis))
+	s_e.add_field(name = "Emojis", value = f':grinning: {len(server.emojis)}')
 	
 	if str(server.created_at)[8:10] == '01':
 		server_day = str(server.created_at)[9:10] + 'st'
