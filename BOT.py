@@ -39,13 +39,18 @@ async def emoji(ctx, emoji:discord.Emoji):
 async def server(ctx):
 	server = ctx.guild
 	online_members = 0
+	bot_members = 0
 	s_e = discord.Embed(title = server.name, description = server.description, color = discord.Color.green())
 	s_e.add_field(name = "Server ID", value = server.id)
 	s_e.add_field(name = "Server Owner", value = server.owner.mention)
 	for i in range(0, len(server.members)):
 		if server.members[i].status == discord.Status.online or server.members[i].status == discord.Status.idle or server.members[i].status == discord.Status.dnd:
-			online_members += 1
-	members = f'<:online:747352635643920385> {online_members} Online<:transparent:747360968773730325><:offline:747355444250542141> {len(server.members)} Members'
+			if server.members[i].bot == False:
+				online_members += 1
+	for i in range(0, len(server.members)):
+		if server.member[i].bot == True:
+			bot_members += 1
+	members = f'<:online:747352635643920385> {online_members} Online<:transparent:747360968773730325><:offline:747355444250542141> {len(server.members) - bot_members} Members'
 	s_e.add_field(name = "Members", value = members, inline = False)
 	channels = f'<:textchannel:747403102650368032> {len(server.text_channels)} Text<:transparent:747360968773730325><:voicechannel:747410314630266960> {len(server.voice_channels)} Voice'
 	s_e.add_field(name = "Channels", value = channels, inline = False)
