@@ -48,6 +48,7 @@ async def server(ctx):
 	members = f'<:online:747352635643920385> {online_members} Online <:transparent:747360968773730325> <:offline:747355444250542141> {len(server.members)} Members'
 	s_e.add_field(name = "Members", value = members, inline = False)
 	channels = f'<:textchannel:747364143081717808> {len(server.text_channels)} Text <:transparent:747360968773730325> <:voicechannel:> {len(server.voice_channels)} Voice'
+	s_e.add_field(name = "Channels", value = channels, inline = False)
 	s_e.set_thumbnail(url = server.icon_url)
 	s_e.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = s_e)
