@@ -47,7 +47,7 @@ async def server(ctx):
 			online_members += 1
 	members = f'<:online:747352635643920385> {online_members} Online <:transparent:747360968773730325> <:offline:747355444250542141> {len(server.members)} Members'
 	s_e.add_field(name = "Members", value = members, inline = False)
-	channels = f'<:textchannel:747393055656771634> {len(server.text_channels)} Text <:transparent:747360968773730325> <:voicechannel:747399929194086440> {len(server.voice_channels)} Voice'
+	channels = f'<:textchannel:747403102650368032> {len(server.text_channels)} Text <:transparent:747360968773730325> <:voicechannel:747403059927187496> {len(server.voice_channels)} Voice'
 	s_e.add_field(name = "Channels", value = channels, inline = False)
 	s_e.set_thumbnail(url = server.icon_url)
 	s_e.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
