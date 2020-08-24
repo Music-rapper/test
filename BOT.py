@@ -57,7 +57,7 @@ async def server(ctx):
 		s_e.add_field(name = "Voice Region", value = ":flag_br: Brazil")
 	elif server.region == discord.VoiceRegion('dubai'):
 		s_e.add_field(name = "Voice Region", value = ":flag_ae: United Arab Emirates")
-	elif server.region == discord.VoiceRegion('eu_west') or server.region == discord.VoiceRegion('europe'):
+	elif server.region == discord.VoiceRegion('europe'):
 		s_e.add_field(name = "Voice Region", value = ":flag_eu: Europe")
 	elif server.region == discord.VoiceRegion('frankfurt'):
 		s_e.add_field(name = "Voice Region", value = ":flag_de: Germany", inline = False)
