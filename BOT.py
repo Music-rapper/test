@@ -51,8 +51,7 @@ async def server(ctx):
 	s_e.add_field(name = "Channels", value = channels, inline = False)
 	s_e.add_field(name = "Roles", value = len(server.roles))
 	s_e.add_field(name = "Emojis", value = len(server.emojis))
-	rusia = server.region('russia')
-	if server.region == russia:
+	if server.region == server.region('russia'):
 		s_e.add_field(name = "Voice Region", value = ":flag_ru: Russia", inline = False)
 	else:
 		s_e.add_field(name = "Voice Region", value = server.region, inline = False)
