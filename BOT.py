@@ -39,14 +39,15 @@ async def emoji(ctx, emoji:discord.Emoji):
 async def server(ctx):
 	server = ctx.guild
 	online_members = 0
-	s_e = discord.Embed(title = server.name, description = server.description, color = discord.Color.dark_gold())
+	s_e = discord.Embed(title = server.name, description = server.description, color = discord.Color.green())
 	s_e.add_field(name = "Server ID", value = server.id)
 	s_e.add_field(name = "Server Owner", value = server.owner)
 	for i in range(0, len(server.members)):
 		if server.members[i].status == discord.Status.online or server.members[i].status == discord.Status.idle or server.members[i].status == discord.Status.dnd:
 			online_members += 1
-	members = f'<:online:747352635643920385> {str(online_members)} Online <:transparent:747360968773730325> <:offline:747355444250542141> {str(len(server.members))} Members'
+	members = f'<:online:747352635643920385> {online_members} Online <:transparent:747360968773730325> <:offline:747355444250542141> {len(server.members)} Members'
 	s_e.add_field(name = "Members", value = members, inline = False)
+	channels = f'<:textchannel:> {len(server.text_channels)} Text <:transparent:747360968773730325> <:voicechannel:> {len(server.voice_channels)} Voice'
 	s_e.set_thumbnail(url = server.icon_url)
 	s_e.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = s_e)
