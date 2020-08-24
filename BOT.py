@@ -32,7 +32,7 @@ async def leave(ctx):
 async def emoji(ctx, emoji:discord.Emoji):
 	e_e = discord.Embed(title = emoji.name, color = discord.Color.green())
 	e_e.set_thumbnail(url = emoji.url)
-	e_e.set_footer(text = 'ID ' + emoji.id)
+	e_e.set_footer(text = 'ID ' + str(emoji.id))
 	await ctx.send(embed = e_e)
 
 @Bot.command()
