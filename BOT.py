@@ -42,7 +42,7 @@ async def server(ctx):
 	for i in range(0, len(server.members)):
 		if server.members[i].status == discord.Status.online or server.members[i].status == discord.Status.idle or server.members[i].status == discord.Status.dnd:
 			online_members += 1
-	members = f'<:online:747352635643920385> {str(online_members)} Online <:transparent:747348899139944488> <:offline:747121312262258768> {str(len(server.members))} Members'
+	members = f'<:online:747352635643920385> {str(online_members)} Online <:transparent:747348899139944488> <:offline:747355444250542141> {str(len(server.members))} Members'
 	s_e.add_field(name = "Members", value = members, inline = False)
 	s_e.set_thumbnail(url = server.icon_url)
 	s_e.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
