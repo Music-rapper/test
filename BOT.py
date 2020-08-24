@@ -30,8 +30,8 @@ async def leave(ctx):
 
 @Bot.command()
 async def emoji(ctx, emoji:discord.Emoji):
-	e_e = discord.Embed(description = emoji.name, color = discord.Color.green())
-	e_e.set_thumbnail(url = emoji.url)
+	e_e = discord.Embed(title = emoji.name, color = discord.Color.green())
+	e_e.set_image(url = emoji.url)
 	e_e.set_footer(text = 'ID: ' + str(emoji.id))
 	await ctx.send(embed = e_e)
 
@@ -39,7 +39,7 @@ async def emoji(ctx, emoji:discord.Emoji):
 async def server(ctx):
 	server = ctx.guild
 	online_members = 0
-	s_e = discord.Embed(title = server.name, description = server.description, color = discord.Color.dark_red())
+	s_e = discord.Embed(title = server.name, description = server.description, color = discord.Color.dark_gold())
 	s_e.add_field(name = "Server ID", value = server.id)
 	s_e.add_field(name = "Server Owner", value = server.owner)
 	for i in range(0, len(server.members)):
