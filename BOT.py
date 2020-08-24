@@ -67,11 +67,11 @@ async def server(ctx):
 	elif (str(server.created_at)[8:10] == '04' or str(server.created_at)[8:10] == '05' or str(server.created_at)[8:10] == '06'
 	      or str(server.created_at)[8:10] == '07' or str(server.created_at)[8:10] == '08' or str(server.created_at)[8:10] == '09'):
 		server_day = str(server.created_at)[9:10] + 'th'
-	elif str(member.created_at)[8:10] == '21' or str(server.created_at)[8:10] == '31':
+	elif str(server.created_at)[8:10] == '21' or str(server.created_at)[8:10] == '31':
 		server_day = str(server.created_at)[8:10] + 'st'
-	elif str(member.created_at)[8:10] == '22':
+	elif str(server.created_at)[8:10] == '22':
 		server_day = str(server.created_at)[8:10] + 'nd'
-	elif str(member.created_at)[8:10] == '23':
+	elif str(server.created_at)[8:10] == '23':
 		server_day = str(server.created_at)[8:10] + 'rd'
 	else:
 		server_day = str(server.created_at)[8:10] + 'th'
