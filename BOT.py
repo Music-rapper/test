@@ -81,7 +81,7 @@ async def server(ctx):
 		s_e.add_field(name = "Voice Region", value = ":flag_au: Australia", inline = False)
 	elif (server.region == discord.VoiceRegion('us_central') or server.region == discord.VoiceRegion('us_east')
 	      or server.region == discord.VoiceRegion('vip_us_east') or server.region == discord.VoiceRegion('us_south')
-	      or server.region == discord.VoiceRegion('us_west') or server.region == discord.VoiceRegion('vip_us_west'):
+	      or server.region == discord.VoiceRegion('us_west') or server.region == discord.VoiceRegion('vip_us_west')):
 		s_e.add_field(name = "Voice Region", value = ":flag_us: USA", inline = False)
 	s_e.set_thumbnail(url = server.icon_url)
 	s_e.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
