@@ -57,34 +57,354 @@ async def server(ctx):
 	s_e.add_field(name = "Channels", value = channels, inline = False)
 	s_e.add_field(name = "Roles", value = len(server.roles))
 	s_e.add_field(name = "Emojis", value = len(server.emojis))
+	
+	if str(server.created_at)[8:10] == '01':
+		server_day = str(server.created_at)[9:10] + 'st'
+	elif str(server.created_at)[8:10] == '02':
+		server_day = str(server.created_at)[9:10] + 'nd'
+	elif str(server.created_at)[8:10] == '03':
+		server_day = str(server.created_at)[9:10] + 'rd'
+	elif (str(server.created_at)[8:10] == '04' or str(server.created_at)[8:10] == '05' or str(server.created_at)[8:10] == '06'
+	      or str(server.created_at)[8:10] == '07' or str(server.created_at)[8:10] == '08' or str(server.created_at)[8:10] == '09'):
+		server_day = str(server.created_at)[9:10] + 'th'
+	elif str(member.created_at)[8:10] == '21' or str(server.created_at)[8:10] == '31':
+		server_day = str(server.created_at)[8:10] + 'st'
+	elif str(member.created_at)[8:10] == '22':
+		server_day = str(server.created_at)[8:10] + 'nd'
+	elif str(member.created_at)[8:10] == '23':
+		server_day = str(server.created_at)[8:10] + 'rd'
+	else:
+		server_day = str(server.created_at)[8:10] + 'th'
+		
+	if str(server.created_at)[5:7] == '01':
+		server_month = ' February '
+	elif str(server.created_at)[5:7] == '02':
+		server_month = ' January '
+	elif str(server.created_at)[5:7] == '03':
+		server_month = ' March '
+	elif str(server.created_at)[5:7] == '04':
+		server_month = ' April '
+	elif str(server.created_at)[5:7] == '05':
+		server_month = ' May '
+	elif str(server.created_at)[5:7] == '06':
+		server_month = ' June '
+	elif str(server.created_at)[5:7] == '07':
+		server_month = ' July '
+	elif str(server.created_at)[5:7] == '08':
+		server_month = ' August '
+	elif str(server.created_at)[5:7] == '09':
+		server_month = ' September '
+	elif str(server.created_at)[5:7] == '10':
+		server_month = ' October '
+	elif str(server.created_at)[5:7] == '11':
+		server_month = ' November '
+	elif str(server.created_at)[5:7] == '12':
+		server_month = ' December '
+		
+	server_date = server_day + server_month + str(server.created_at)[2:4]
+	
+	now_time_year = str(datetime.date.today())[0:4]
+	now_time_year = int(now_time_year)
+	server_time_year = str(server.created_at)[0:4]
+	server_time_year = int(server_time_year)
+	
+	now_time_month = str(datetime.date.today())[5:7]
+	now_time_month = int(now_time_month)
+	server_time_month = str(server.created_at)[5:7]
+	server_time_month = int(server_time_month)
+	
+	if (now_time_month == 1 or now_time_month == 3 or now_time_month == 5 or now_time_month == 7
+	    or now_time_month == 8 or now_time_month == 10 or now_time_month == 12):
+		day_bonus = 31
+	elif now_time_month == 2:
+		day_bonus = 28
+	else:
+		day_bonus = 30
+	
+	now_time_day = str(datetime.date.today())[8:10]
+	now_time_day = int(now_time_day)
+	server_time_day = str(server.created_at)[8:10]
+	server_time_day = int(server_time_day)
+	week = 0
+	
+	if now_time_day < server_time_day:
+		now_time_month -= 1
+		now_time_day += day_bonus
+		day = now_time_day - server_time_day
+	else:
+		day = now_time_day - server_time_day
+	
+	if now_time_month < server_time_month:
+		now_time_year -= 1
+		now_time_month += 12
+		month = now_time_month - server_time_month
+	else:
+		month = now_time_month - server_time_month
+	
+	while day // 7:
+		week += 1
+		day -= 7
+	
+	year = now_time_year - server_time_year
+	
+	if year == 0:
+		if month == 0:
+			if week == 0:
+				if day == 0:
+					server_msg = 'Today'
+				elif day == 1:
+					server_msg = '1 day ago'
+				else:
+					server_msg = f'{str(day)} days ago'
+					
+			elif week == 1:
+				if day == 0:
+					server_msg = '1 week ago'
+				elif day == 1:
+					server_msg = '1 week and 1 day ago'
+				else:
+					server_msg = f'1 week and {str(day)} days ago'
+					
+			else:
+				if day == 0:
+					server_msg = f'{str(week)} weeks ago'
+				elif day == 1:
+					server_msg = f'{str(week)} weeks and 1 day ago'
+				else:
+					server_msg = f'{str(week)} weeks and ' + str(day) + ' days ago'
+		elif month == 1:
+			if week == 0:
+				if day == 0:
+					server_msg = '1 month ago'
+				elif day == 1:
+					server_msg = '1 month and 1 day ago'
+				else:
+					server_msg = f'1 month and {str(day)} days ago'
+					
+			elif week == 1:
+				if day == 0:
+					server_msg = '1 month and 1 week ago'
+				elif day == 1:
+					server_msg = '1 month, 1 week and 1 day ago'
+				else:
+					server_msg = f'1 month, 1 week and {str(day)} days ago'
+					
+			else:
+				if day == 0:
+					server_msg = f'1 month {str(week)} weeks ago'
+				elif day == 1:
+					server_msg = f'1 month, {str(week)} weeks and 1 day ago'
+				else:
+					server_msg = f'1 month, {str(week)} weeks and ' + str(day) + ' days ago'
+					
+		else:
+			if week == 0:
+				if day == 0:
+					server_msg = f'{str(month)} month ago'
+				elif day == 1:
+					server_msg = f'{str(month)} month and 1 day ago'
+				else:
+					server_msg = f'{str(month)} month and ' + str(day) + ' days ago'
+					
+			elif week == 1:
+				if day == 0:
+					server_msg = f'{month} month and 1 week ago'
+				elif day == 1:
+					server_msg = f'{month} month, 1 week and 1 day ago'
+				else:
+					server_msg = f'{month} month, 1 week and ' + str(day) + ' days ago'
+					
+			else:
+				if day == 0:
+					server_msg = f'{month} month and ' + str(week) + ' weeks ago'
+				elif day == 1:
+					server_msg = f'{month} month and ' + str(week) + ' weeks and 1 day ago'
+				else:
+					server_msg = f'{month} month and ' + str(week) + f' weeks and {str(day)} days ago'
+					
+	elif year == 1:
+		if month == 0:
+			if week == 0:
+				if day == 0:
+					server_msg = '1 year ago'
+				elif day == 1:
+					server_msg = '1 year and 1 day ago'
+				else:
+					server_msg = f'1 year and {str(day)} days ago'
+					
+			elif week == 1:
+				if day == 0:
+					server_msg = '1 year and 1 week ago'
+				elif day == 1:
+					server_msg = '1 year, 1 week and 1 day ago'
+				else:
+					server_msg = f'1 year, 1 week and {str(day)} days ago'
+					
+			else:
+				if day == 0:
+					server_msg = f'1 year and {str(week)} weeks ago'
+				elif day == 1:
+					server_msg = f'1 year, {str(week)} weeks and 1 day ago'
+				else:
+					server_msg = f'1 year, {str(week)} weeks and ' + str(day) + ' days ago'
+					
+		elif month == 1:
+			if week == 0:
+				if day == 0:
+					server_msg = '1 year and 1 month ago'
+				elif day == 1:
+					server_msg = '1 year, 1 month and 1 day ago'
+				else:
+					server_msg = f'1 year, 1 month and {str(day)} days ago'
+					
+			elif week == 1:
+				if day == 0:
+					server_msg = '1 year, 1 month and 1 week ago'
+				elif day == 1:
+					server_msg = '1 year, 1 month, 1 week and 1 day ago'
+				else:
+					server_msg = f'1 year, 1 month, 1 week and {str(day)} days ago'
+					
+			else:
+				if day == 0:
+					server_msg = f'1 year, 1 month and {str(week)} weeks ago'
+				elif day == 1:
+					server_msg = f'1 year, 1 month, {str(week)} weeks and 1 day ago'
+				else:
+					server_msg = f'1 year, 1 month, {str(week)} weeks and ' + str(day) + ' days ago'
+					
+		else:
+			if week == 0:
+				if day == 0:
+					server_msg = f'1 year and {str(month)} month ago'
+				elif day == 1:
+					server_msg = f'1 year, {str(month)} month and 1 day ago'
+				else:
+					server_msg = f'1 year, {str(month)} month and ' + str(day) + ' days ago'
+					
+			elif week == 1:
+				if day == 0:
+					server_msg = f'1 year, {str(month)} month and 1 week ago'
+				elif day == 1:
+					server_msg = f'1 year, {str(month)} month, 1 week and 1 day ago'
+				else:
+					server_msg = f'1 year, {str(month)} month, 1 week and ' + str(day) + ' days ago'
+					
+			else:
+				if day == 0:
+					server_msg = f'1 year, {str(month)} month and ' + str(week) + ' weeks ago'
+				elif day == 1:
+					server_msg = f'1 year, {str(month)} month, ' + str(week) + ' weeks and 1 day ago'
+				else:
+					server_msg = f'1 year, {str(month)} month, ' + str(week) + f' weeks and {str(day)} days ago'
+	else:
+		if month == 0:
+			if week == 0:
+				if day == 0:
+					server_msg = f'{str(year)} years ago'
+				elif day == 1:
+					server_msg = f'{str(year)} years and 1 day ago'
+				else:
+					server_msg = f'{str(year)} years and ' + str(day) + ' days ago'
+					
+			elif week == 1:
+				if day == 0:
+					server_msg = f'{str(year)} years and 1 week ago'
+				elif day == 1:
+					server_msg = f'{str(year)} years, 1 week and 1 day ago'
+				else:
+					server_msg = f'{str(year)} years, 1 week and ' + str(day) + ' days ago'
+					
+			else:
+				if day == 0:
+					server_msg = f'{str(year)} years and ' + str(week) + ' weeks ago'
+				elif day == 1:
+					server_msg = f'{str(year)} years, ' + str(week) + ' weeks and 1 day ago'
+				else:
+					server_msg = f'{str(year)} years, ' + str(week) + f' weeks and {str(day)} days ago'
+					
+		elif month == 1:
+			if week == 0:
+				if day == 0:
+					server_msg = f'{str(year)} years and 1 month ago'
+				elif day == 1:
+					server_msg = f'{str(year)} years, 1 month and 1 day ago'
+				else:
+					server_msg = f'{str(year)} years, 1 month and ' + str(day) + ' days ago'
+					
+			elif week == 1:
+				if day == 0:
+					server_msg = f'{str(year)} years, 1 month and 1 week ago'
+				elif day == 1:
+					server_msg = f'{str(year)} years, 1 month, 1 week and 1 day ago'
+				else:
+					server_msg = f'{str(year)} years, 1 month, 1 week and ' + str(day) + ' days ago'
+					
+			else:
+				if day == 0:
+					server_msg = f'{str(year)} years, 1 month and ' + str(week) + ' weeks ago'
+				elif day == 1:
+					server_msg = f'{str(year)} years, 1 month, ' + str(week) + ' weeks and 1 day ago'
+				else:
+					server_msg = f'{str(year)} years, 1 month, ' + str(week) + f' weeks and {str(day)} days ago'
+					
+		else:
+			if week == 0:
+				if day == 0:
+					server_msg = f'{str(year)} years and ' + str(month) + ' month ago'
+				elif day == 1:
+					server_msg = f'{str(year)} years, ' +  str(month) + ' month and 1 day ago'
+				else:
+					server_msg = f'{str(year)} years, ' + str(month) + f' month and {str(day)} days ago'
+					
+			elif week == 1:
+				if day == 0:
+					server_msg = f'{str(year)} years, ' + str(month) + ' month and 1 week ago'
+				elif day == 1:
+					server_msg = f'{str(year)} years, ' + str(month) + ' month, 1 week and 1 day ago'
+				else:
+					server_msg = f'{str(year)} years, ' + str(month) + f' month, 1 week and {str(day)} days ago'
+					
+			else:
+				if day == 0:
+					server_msg = f'{str(year)} years, ' + str(month) + f' month and {str(week)} weeks ago'
+				elif day == 1:
+					server_msg = f'{str(year)} years, ' + str(month) + f' month and {str(week)} weeks and 1 day ago'
+				else:
+					server_msg = f'{str(year)} years, ' + str(month) + f' month and {str(week)} weeks and ' + str(day) + ' days ago'
+	
+	server_info = server_date + f' ({server_msg})'
+	
+	s_e.add_field(name = "Created at", value = server_indo, inline = False)
+	
 	if server.region == discord.VoiceRegion('amsterdam'):
-		s_e.add_field(name = "Voice Region", value = ":flag_nl: Nethelands", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_nl: Nethelands")
 	elif server.region == discord.VoiceRegion('brazil'):
-		s_e.add_field(name = "Voice Region", value = ":flag_br: Brazil", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_br: Brazil")
 	elif server.region == discord.VoiceRegion('dubai'):
-		s_e.add_field(name = "Voice Region", value = ":flag_ae: United Arab Emirates", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_ae: United Arab Emirates")
 	elif server.region == discord.VoiceRegion('europe'):
-		s_e.add_field(name = "Voice Region", value = ":flag_eu: Europe", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_eu: Europe")
 	elif server.region == discord.VoiceRegion('frankfurt'):
-		s_e.add_field(name = "Voice Region", value = ":flag_de: Germany", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_de: Germany")
 	elif server.region == discord.VoiceRegion('hongkong'):
-		s_e.add_field(name = "Voice Region", value = ":flag_hk: Hong Kong", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_hk: Hong Kong")
 	elif server.region == discord.VoiceRegion('india'):
-		s_e.add_field(name = "Voice Region", value = ":flag_in: India", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_in: India")
 	elif server.region == discord.VoiceRegion('japan'):
-		s_e.add_field(name = "Voice Region", value = ":flag_jp: Japan", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_jp: Japan")
 	elif server.region == discord.VoiceRegion('london'):
-		s_e.add_field(name = "Voice Region", value = ":flag_gb: United Kingdom", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_gb: United Kingdom")
 	elif server.region == discord.VoiceRegion('russia'):
-		s_e.add_field(name = "Voice Region", value = ":flag_ru: Russia", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_ru: Russia")
 	elif server.region == discord.VoiceRegion('singapore'):
-		s_e.add_field(name = "Voice Region", value = ":flag_sg: Singapore", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_sg: Singapore")
 	elif server.region == discord.VoiceRegion('southafrica'):
-		s_e.add_field(name = "Voice Region", value = ":flag_za: South Africa", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_za: South Africa")
 	elif server.region == discord.VoiceRegion('south_korea'):
-		s_e.add_field(name = "Voice Region", value = ":flag_kr: South Korea", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_kr: South Korea")
 	elif server.region == discord.VoiceRegion('sydney'):
-		s_e.add_field(name = "Voice Region", value = ":flag_au: Australia", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_au: Australia")
 	elif (server.region == discord.VoiceRegion('us_central') or server.region == discord.VoiceRegion('us_east')
 	      or server.region == discord.VoiceRegion('vip_us_east') or server.region == discord.VoiceRegion('us_south')
 	      or server.region == discord.VoiceRegion('us_west') or server.region == discord.VoiceRegion('vip_us_west')):
