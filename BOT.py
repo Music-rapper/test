@@ -40,6 +40,7 @@ async def server(ctx):
 	server = ctx.guild
 	online_members = 0
 	bot_members = 0
+	bans = await server.bans()
 	s_e = discord.Embed(title = server.name, description = server.description, color = discord.Color.green())
 	s_e.add_field(name = "Server ID", value = server.id)
 	s_e.add_field(name = "Server Owner", value = server.owner.mention)
@@ -88,6 +89,7 @@ async def server(ctx):
 	      or server.region == discord.VoiceRegion('vip_us_east') or server.region == discord.VoiceRegion('us_south')
 	      or server.region == discord.VoiceRegion('us_west') or server.region == discord.VoiceRegion('vip_us_west')):
 		s_e.add_field(name = "Voice Region", value = ":flag_us: USA", inline = False)
+	s_e.add_field(name = "Bans", value = len(bans), inline = False)
 	s_e.set_thumbnail(url = server.icon_url)
 	s_e.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = s_e)
