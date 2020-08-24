@@ -45,7 +45,7 @@ async def server(ctx):
 	members_online = f'<:online:747121287893352509> {str(online_members)} Online'
 	members_offline = f'<:offline:747121312262258768> {str(len(server.members))} Members'
 	s_e.add_field(name = "Members", value = members_online)
-	s_e.add_field(name = "", value = member_offline)
+	s_e.add_field(name = "", value = members_offline)
 	s_e.set_thumbnail(url = server.icon_url)
 	s_e.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = s_e)
@@ -53,7 +53,7 @@ async def server(ctx):
 @Bot.event
 async def on_ready():
 	print('Bot is ready!')
-	await Bot.change_presence(status = discord.Status.dnd, activity = discord.Game('Я слежу за вами, рабы Купола. Без моего разрешения вы не можете ничего!!!'))
+	await Bot.change_presence(status = discord.Status.dnd, activity = discord.Game('Хочется пошпехатся, а не с кем. О разработчик пошли потрахаемся.'))
 	
 token = os.environ.get('BOT_TOKEN')
 
