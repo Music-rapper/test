@@ -51,7 +51,7 @@ async def server(ctx):
 	s_e.add_field(name = "Channels", value = channels, inline = False)
 	s_e.add_field(name = "Roles", value = len(server.roles))
 	s_e.add_field(name = "Emojis", value = len(server.emojis))
-	if server.region == discord.VoiceRegion('amsterdam') or server.region == discord.VoiceRegion('vip_amsterdam'):
+	if server.region == discord.VoiceRegion('amsterdam'):
 		s_e.add_field(name = "Voice Region", value = ":flag_nl: Nethelands")
 	elif server.region == discord.VoiceRegion('brazil'):
 		s_e.add_field(name = "Voice Region", value = ":flag_br: Brazil")
