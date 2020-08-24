@@ -50,10 +50,10 @@ async def server(ctx):
 			if server.members[i].bot == False:
 				online_members += 1
 		elif server.members[i].status == discord.Status.idle:
-			if server.memberss[i].bot == False:
+			if server.members[i].bot == False:
 				inactive_members += 1
 		elif server.members[i].status == discord.Status.dnd:
-			if server.memberss[i].bot == False:
+			if server.members[i].bot == False:
 				busy_members += 1
 	for i in range(0, len(server.members)):
 		if server.members[i].bot == True:
