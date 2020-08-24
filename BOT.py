@@ -42,8 +42,7 @@ async def server(ctx):
 	for i in range(0, len(server.members)):
 		if server.members[i].status == discord.Status.online or server.members[i].status == discord.Status.idle or server.members[i].status == discord.Status.dnd:
 			online_members += 1
-	members_online = f'<:online:747121287893352509> {str(online_members)} Online'
-	members_offline = f'<:offline:747121312262258768> {str(len(server.members))} Members'
+	members_online = f'<:online:747121287893352509> {str(online_members)}<:transparent:747346151014924319><:offline:747121312262258768> {str(len(server.members))} Members'
 	s_e.add_field(name = "Members", value = members_online)
 	s_e.add_field(name = "", value = members_offline)
 	s_e.set_thumbnail(url = server.icon_url)
