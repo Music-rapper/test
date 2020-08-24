@@ -38,6 +38,9 @@ async def emoji(ctx, emoji:discord.Emoji):
 
 @Bot.command()
 async def clean(ctx, channel = None, msgs = None):
+	def is_me(m):
+		return m.author == ctx.author
+		
 	if channel == None:
 		await ctx.send('These command need argument')
 	else:
@@ -64,6 +67,7 @@ async def clean(ctx, channel = None, msgs = None):
 					await ctx.send(f'Deleted {len(deleted)} message')
 				else:
 					await ctx.send(f'Deleted {len(deleted)} messages')
+	await ctx.purge(limit = 1, check = is_me)
 				
 @Bot.event
 async def on_ready():
