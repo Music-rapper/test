@@ -51,6 +51,8 @@ async def server(ctx):
 	s_e.add_field(name = "Channels", value = channels, inline = False)
 	s_e.add_field(name = "Roles", value = len(server.roles))
 	s_e.add_field(name = "Emojis", value = len(server.emojis))
+	if server.region == 'russia':
+		s_e.add_field(name = "Voice Region", value = ":flag_ru: Russia")
 	s_e.add_field(name = "Voice Region", value = server.region, inline = False)
 	s_e.set_thumbnail(url = server.icon_url)
 	s_e.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
