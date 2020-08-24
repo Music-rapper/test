@@ -57,7 +57,7 @@ async def clean(ctx, channel = None, msgs = None):
 		else:
 			if stop == False:
 				deleted = await ctx.channel.purge(limit = int(channel))
-				await ctx.send(f' Ddeleted {deleted} message(s)')
+				await ctx.send(f' Ddeleted {len(deleted)} message(s)')
 				
 @Bot.event
 async def on_ready():
