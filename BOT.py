@@ -37,12 +37,23 @@ async def emoji(ctx, emoji:discord.Emoji):
 	await ctx.send(embed = e_e)
 
 @Bot.command()
-async def clean(ctx, channel = None, msgs):
+async def clean(ctx, channel = None, msgs = None):
 	if channel == None:
 		await ctx.send('These command need argument')
 	else:
-		pass
-	#deleted = await 
+		stop = False
+		guild = ctx.guild
+		channel_list = guild.text_channels
+		for i in range(0, len(channel_list)):
+			if channel == channel_list[i].name or channel == channel_list[i].id or channel == channel_list[i].mention:
+				if msgs == None:
+					stop = True
+					await ctx.send('You don\'t wrote how many messages I need to delete.')
+				else:
+					stop = True
+					channel = channel_list[i]
+					deleted = await channel.purge(limit = int(msgs))
+					await channel.send(f' Ddeleted {deleted} message(s)')
 	
 @Bot.event
 async def on_ready():
