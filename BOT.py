@@ -37,7 +37,7 @@ async def emoji(ctx, emoji:discord.Emoji):
 	await ctx.send(embed = e_e)
 
 @Bot.command()
-asycn def clean(ctx, channel = None, msgs):
+async def clean(ctx, channel = None, msgs):
 	if channel == None:
 		await ctx.send('These command need argument')
 	else:
