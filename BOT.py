@@ -35,6 +35,14 @@ async def emoji(ctx, emoji:discord.Emoji):
 	e_e.set_image(url = emoji.url)
 	e_e.set_footer(text = 'ID: ' + str(emoji.id))
 	await ctx.send(embed = e_e)
+
+@Bot.command()
+asycn def clean(ctx, channel = None, msgs):
+	if channel == None:
+		await ctx.send('These command need argument')
+	else:
+		pass
+	#deleted = await 
 	
 @Bot.event
 async def on_ready():
