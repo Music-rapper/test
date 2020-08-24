@@ -55,6 +55,7 @@ async def clean(ctx, channel = None, msgs = None):
 					channel = channel_list[i]
 					deleted = await channel.purge(limit = int(msgs))
 					if len(deleted) == 1:
+						await channel.purge(limit = 1)
 						await channel.send(f'Deleted {len(deleted)} message')
 					else:
 						await channel.send(f'Deleted {len(deleted)} messages')
@@ -62,6 +63,7 @@ async def clean(ctx, channel = None, msgs = None):
 			if stop == False:
 				deleted = await ctx.channel.purge(limit = int(channel))
 				if len(deleted) == 1:
+					await channel.purge(limit = 1)
 					await ctx.send(f'Deleted {len(deleted)} message')
 				else:
 					await ctx.send(f'Deleted {len(deleted)} messages')
