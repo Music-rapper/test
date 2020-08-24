@@ -34,8 +34,8 @@ async def emoji(ctx, emoji:discord.Emoji):
 	e_e = discord.Embed(title = emoji.name, color = discord.Color.green())
 	e_e.set_image(url = emoji.url)
 	e_e.set_footer(text = 'ID: ' + str(emoji.id))
+	await ctx.channel.purge(limit = 1)
 	await ctx.send(embed = e_e)
-	await ctx.channel.purge(limit = 1, check = ctx)
 
 @Bot.command()
 async def clean(ctx, channel = None, msgs = None):
