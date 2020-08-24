@@ -51,7 +51,7 @@ async def server(ctx):
 			if server.members[i].bot == False:
 				online_members += 1
 		else:
-			await ctx.send(f'{server.members[i].mention] is offline')
+			await ctx.send(f'{server.members[i].mention]} is offline')
 	for i in range(0, len(server.members)):
 		if server.members[i].bot == True:
 			bot_members += 1
