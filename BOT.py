@@ -48,7 +48,7 @@ async def server(ctx):
 			if server.members[i].bot == False:
 				online_members += 1
 	for i in range(0, len(server.members)):
-		if server.member[i].bot == True:
+		if server.members[i].bot == True:
 			bot_members += 1
 	members = f'<:online:747352635643920385> {online_members} Online<:transparent:747360968773730325><:offline:747355444250542141> {len(server.members) - bot_members} Members'
 	s_e.add_field(name = "Members", value = members, inline = False)
