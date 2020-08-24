@@ -66,30 +66,30 @@ async def server(ctx):
 	elif server.region == discord.VoiceRegion('europe'):
 		s_e.add_field(name = "Voice Region", value = ":flag_eu: Europe")
 	elif server.region == discord.VoiceRegion('frankfurt'):
-		s_e.add_field(name = "Voice Region", value = ":flag_de: Germany", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_de: Germany")
 	elif server.region == discord.VoiceRegion('hongkong'):
-		s_e.add_field(name = "Voice Region", value = ":flag_hk: Hong Kong", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_hk: Hong Kong")
 	elif server.region == discord.VoiceRegion('india'):
-		s_e.add_field(name = "Voice Region", value = ":flag_in: India", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_in: India")
 	elif server.region == discord.VoiceRegion('japan'):
-		s_e.add_field(name = "Voice Region", value = ":flag_jp: Japan", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_jp: Japan")
 	elif server.region == discord.VoiceRegion('london'):
-		s_e.add_field(name = "Voice Region", value = ":flag_gb: United Kingdom", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_gb: United Kingdom")
 	elif server.region == discord.VoiceRegion('russia'):
-		s_e.add_field(name = "Voice Region", value = ":flag_ru: Russia", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_ru: Russia")
 	elif server.region == discord.VoiceRegion('singapore'):
-		s_e.add_field(name = "Voice Region", value = ":flag_sg: Singapore", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_sg: Singapore")
 	elif server.region == discord.VoiceRegion('southafrica'):
-		s_e.add_field(name = "Voice Region", value = ":flag_za: South Africa", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_za: South Africa")
 	elif server.region == discord.VoiceRegion('south_korea'):
-		s_e.add_field(name = "Voice Region", value = ":flag_kr: South Korea", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_kr: South Korea")
 	elif server.region == discord.VoiceRegion('sydney'):
-		s_e.add_field(name = "Voice Region", value = ":flag_au: Australia", inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_au: Australia")
 	elif (server.region == discord.VoiceRegion('us_central') or server.region == discord.VoiceRegion('us_east')
 	      or server.region == discord.VoiceRegion('vip_us_east') or server.region == discord.VoiceRegion('us_south')
 	      or server.region == discord.VoiceRegion('us_west') or server.region == discord.VoiceRegion('vip_us_west')):
-		s_e.add_field(name = "Voice Region", value = ":flag_us: USA", inline = False)
-	s_e.add_field(name = "Bans", value = len(bans), inline = False)
+		s_e.add_field(name = "Voice Region", value = ":flag_us: USA")
+	s_e.add_field(name = "Bans", value = f'<:banhammer:747471683140452391> len(bans)')
 	s_e.set_thumbnail(url = server.icon_url)
 	s_e.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = s_e)
