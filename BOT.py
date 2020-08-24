@@ -376,7 +376,7 @@ async def server(ctx):
 	
 	server_info = server_date + f' ({server_msg})'
 	
-	s_e.add_field(name = "Created at", value = server_indo, inline = False)
+	s_e.add_field(name = "Created at", value = server_info, inline = False)
 	
 	if server.region == discord.VoiceRegion('amsterdam'):
 		s_e.add_field(name = "Voice Region", value = ":flag_nl: Nethelands")
