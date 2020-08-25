@@ -20,11 +20,6 @@ async def help(ctx, command = None):
 	h_e.set_thumbnail(url = me.avatar_url)
 	h_e.set_footer(text = f'Caused by: {str(ctx.author)}', icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = h_e)
-
-@Bot.command()
-async def perms(ctx):
-	await ctx.send(ctx.channel.permissions_for(ctx.author).read_messages)
-	await ctx.send(ctx.channel.overwrites_for(ctx.author.roles[0]).read_messages)
 	
 @Bot.command()
 async def emoji(ctx, emoji:discord.Emoji):
@@ -39,6 +34,9 @@ async def emoji(ctx, emoji:discord.Emoji):
 async def channel(ctx, channel = None):
 	
 	guild = ctx.guild
+	role_list = guild.roles
+	roles_quantity = 0
+	roles_msg = ''
 	channel_list = guild.text_channels
 	channel_stop = False
 	
@@ -53,6 +51,13 @@ async def channel(ctx, channel = None):
 			else:
 				await ctx.send('You wrote channel index incorectly.')
 	
+	for i in range(0, len(role_list)):
+		if channel.overwrites_for(role_list[i]).read_message == True:
+			roles_quantity += 1
+			roles_msg += role_list[i].mention
+			if i < len(role_list):
+				roles_msg += ', '
+	
 	c_e = discord.Embed(title = 'Channel information', color = discord.Color.from_rgb(255, 0, 0))
 	c_e.add_field(name = 'Name', value = channel.name)
 	c_e.add_field(name = 'ID', value = channel.id)
@@ -63,7 +68,7 @@ async def channel(ctx, channel = None):
 	if channel.topic != None:
 		c_e.add_field(name = 'Topic', value = channel.topic, inline = False)
 	role = ctx.author.roles[0]
-	c_e.add_field(name = 'Roles', value = '1')
+	c_e.add_field(name = f'Roles ({roles_quantity})', value = roles_msg, inline = False)
 	c_e.add_field(name = 'Created at', value = channel.created_at, inline = False)
 	c_e.set_footer(text = f'Caused by: {ctx.author}', icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = c_e)
