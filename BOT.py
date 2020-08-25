@@ -42,10 +42,13 @@ async def channel(ctx, channel = None):
 			channel = discord.utils.get(channel_list, mention = channel)
 		elif channel[0] in number:
 			channel = discord.utils.get(channel_list, id = int(channel))
+			channel = discord.utils.get(channel_list, name = channel)
+			if type(channel) == 'NoneType':
+				await ctx.send('You wrote channel index incrorectly.')
 		else:
 			channel = discord.utils.get(channel_list, name = channel)
 			await ctx.send(type(channel))
-			if type(channel) == NoneType:
+			if type(channel) == 'NoneType':
 				await ctx.send('You wrote channel index incrorectly.')
 	else:
 		channel = ctx.channel
