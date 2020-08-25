@@ -22,7 +22,7 @@ async def help(ctx, command = None):
 	await ctx.send(embed = h_e)
 
 @Bot.command()
-async def perms():
+async def perms(ctx):
 	await ctx.send(discord.Permissions.text())
 	
 @Bot.command()
