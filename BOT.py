@@ -322,7 +322,7 @@ def calculator(num):
 				if day == 0:
 					msg = f'{year} years and {month} month ago'
 				elif day == 1:
-					msg = f'{year} years, {month) + ' month and 1 day ago'
+					msg = f'{year} years, {month} month and 1 day ago'
 				else:
 					msg = f'{year} years, {month} month and {day} days ago'
 					
