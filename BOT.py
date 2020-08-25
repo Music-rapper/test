@@ -40,8 +40,11 @@ async def channel(ctx, channel = None):
 	if channel != None:
 		if channel[0] == '<':
 			channel = discord.utils.get(channel_list, mention = channel)
-		elif channel[0] in number and channel[17] in number:
-			channel = discord.utils.get(channel_list, id = int(channel))
+		elif len(channel) = 18:
+			if channel[0] in number and channel[17] in number:
+				channel = discord.utils.get(channel_list, id = int(channel))
+			else:
+				channel = discord.utils.get(channel_list, name = channel)
 		else:
 			channel = discord.utils.get(channel_list, name = channel)
 			await ctx.send(type(channel))
