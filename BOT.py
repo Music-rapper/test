@@ -48,7 +48,7 @@ async def channel(ctx, channel = None):
 	else:
 		channel = ctx.channel
 	
-	c_e = discord.Embed(tile = 'Channel information', color = discord.Color.from_rgb(255, 0, 0))
+	c_e = discord.Embed(title = 'Channel information', color = discord.Color.from_rgb(255, 0, 0))
 	c_e.add_field(name = 'Name', value = channel.name)
 	c_e.add_field(name = 'ID', value = channel.id)
 	c_e.add_field(name = 'Mention', value = f'`{channel.mention}`')
