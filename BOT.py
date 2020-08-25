@@ -14,7 +14,7 @@ Bot.remove_command('help')
 @Bot.command()
 async def help(ctx, command = None):
 	me = ctx.guild.me
-	h_e = dicord.Embed(title = 'Phoenix Commands', color = discord.Color.teal())
+	h_e = discord.Embed(title = 'Phoenix Commands', color = discord.Color.teal())
 	h_e.add_field(name = f'{prefix}avatar', value = 'Give you members avatar tha you can easyly download.')
 	h_e.add_field(name = f'{prefix}emoji', value = 'Give imformation about custom emoji')
 	h_e.set_footer(text = f'Caused by: {str(ctx.author)}', icon_url = ctx.author.avatar_url)
