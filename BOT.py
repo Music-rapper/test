@@ -356,6 +356,8 @@ async def channel(ctx, channel = None):
 	read_list = []
 	w_roles_quantity = 0
 	w_roles_msg = ''
+	h_roles_quantity = 0
+	h_roles_msg = ''
 	channel_list = guild.text_channels
 	channel_stop = False
 	
@@ -428,6 +430,34 @@ async def channel(ctx, channel = None):
 						w_roles_msg += ', '
 	else:
 		w_roles_msg = w_roles_msg[0: len(w_roles_msg) - 2]
+		
+	for i in range(0, len(role_list)):
+		if role_list[i] in read_list:
+			if channel.overwrites_for(role_list[0]).send_messages == False:
+				if role_list[i].permissions.read_message_history == True:
+					if (channel.overwrites_for(role_list[i]).read_message_history == True or role_list[i].permissions.administrator == True
+					    or channel.overwrites_for(role_list[i]).read_message_history == None):
+						h_roles_quantity += 1
+						h_roles_msg += role_list[i].mention
+						h_roles_msg += ', '
+				else:
+					if channel.overwrites_for(role_list[i]).read_message_history == True or role_list[i].permissions.administrator == True:
+						h_roles_quantity += 1
+						h_roles_msg += role_list[i].mention
+						h_roles_msg += ', '
+			else:
+				if role_list[i].permissions.send_messages == True:
+					if channel.overwrites_for(role_list[i]).read_message_history != False:
+						h_roles_quantity += 1
+						h_roles_msg += role_list[i].mention
+						h_roles_msg += ', '
+				else:
+					if channel.overwrites_for(role_list[i]).read_message_history == True:
+						h_roles_quantity += 1
+						h_roles_msg += role_list[i].mention
+						h_roles_msg += ', '
+	else:
+		h_roles_msg = h_roles_msg[0: len(h_roles_msg) - 2]
 	
 	c_e = discord.Embed(title = 'Channel information', color = discord.Color.from_rgb(255, 0, 0))
 	c_e.add_field(name = 'Name', value = channel.name)
@@ -439,8 +469,9 @@ async def channel(ctx, channel = None):
 	if channel.topic != None:
 		c_e.add_field(name = 'Topic', value = channel.topic, inline = False)
 	role = ctx.author.roles[0]
-	c_e.add_field(name = f'Roles that can read this channel ({r_roles_quantity})', value = r_roles_msg, inline = False)
+	c_e.add_field(name = f'Roles that can view this channel ({r_roles_quantity})', value = r_roles_msg, inline = False)
 	c_e.add_field(name = f'Roles that can write in this channel ({w_roles_quantity})', value = w_roles_msg, inline = False)
+	c_e.add_field(name = f'Roles that can read this channel ({h_roles_quantity})', value = h_roles_msg, inline = False)
 	c_e.add_field(name = 'Created at', value = calculator(channel.created_at), inline = False)
 	c_e.set_footer(text = f'Caused by: {ctx.author}', icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = c_e)
