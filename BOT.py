@@ -57,7 +57,7 @@ async def channel(ctx, channel = None):
 	c_e.add_field(name = 'NSFW', value = channel.is_nsfw())
 	if channel.topic != None:
 		c_e.add_field(name = 'Topic', value = channel.topic, inline = False)
-	c_e.add_field(name = 'Roles', value = iter(channel.overwrites))
+	c_e.add_field(name = 'Roles', value = iter(channel.overwrites.pair()))
 	c_e.add_field(name = 'Created at', value = channel.created_at, inline = False)
 	c_e.set_footer(text = f'Caused by: {ctx.author}', icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = c_e)
