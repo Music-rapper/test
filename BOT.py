@@ -9,25 +9,11 @@ prefix = '!'
 
 Bot = commands.Bot(command_prefix = prefix)
 
-'''
-@Bot.command()
-async def join(ctx):
-	voice = ctx.author.voice
-	if voice == None:
-		await ctx.send('You need to be in a voice chat to use that')
-	else:
-		await voice.channel.connect(timeout = 5)
+Bot.remove_command('help')
 
 @Bot.command()
-async def leave(ctx):
-	voice = ctx.author.voice
-	if voice == None:
-		await ctx.send('You need to be in a voice chat to use that')
-	else:
-		guild = ctx.guild
-		voice_client = guild.voice_client
-		await voice_client.disconnect()
-'''
+async def help(ctx):
+	await ctx.send(Bot.commands)
 
 @Bot.command()
 async def emoji(ctx, emoji:discord.Emoji):
