@@ -43,9 +43,9 @@ async def avatar(ctx, member = None):
 		member = ctx.author
 	else:
 		pass
-	a_e = discord.Embed(title = f'{member}s avatar', color = discord.Color.green())
+	a_e = discord.Embed(title = f'{member} avatar', color = discord.Color.green())
 	a_e.set_image(url = member.avatar_url)
-	a_e.set_footer(text = f'Caused by: {str(ctx.author)}', icon_url = ctx.author.avatar_url)
+	a_e.set_footer(text = f'Caused by: {ctx.author}', icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = a_e)
 				
 @Bot.event
