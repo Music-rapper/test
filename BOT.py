@@ -80,7 +80,7 @@ async def avatar(ctx, member = None):
 @Bot.event
 async def on_ready():
 	print('Bot is ready!')
-	await Bot.change_presence(status = discord.Status.dnd, activity = discord.Game('Хочется пошпехатся, а не с кем. О разработчик, пошли потрахаемся.'))
+	await Bot.change_presence(status = discord.Status.dnd, activity = discord.Game('1234567890'))
 	
 token = os.environ.get('BOT_TOKEN')
 
