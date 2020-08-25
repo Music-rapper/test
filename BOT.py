@@ -52,7 +52,7 @@ async def channel(ctx, channel = None):
 				await ctx.send('You wrote channel index incorectly.')
 	
 	for i in range(0, len(role_list)):
-		if channel.overwrites_for(role_list[i]).read_message == True:
+		if channel.overwrites_for(role_list[i]).read_messages == True:
 			roles_quantity += 1
 			roles_msg += role_list[i].mention
 			if i < len(role_list):
