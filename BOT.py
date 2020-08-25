@@ -38,7 +38,7 @@ async def channel(ctx, channel = None):
 	channel_stop = False
 	
 	for i in range(0, len(channel_list)):
-		if channel == channel_list[i].name or channel == str(channel_list[i].id) or channel == channel_list[i]:
+		if channel == channel_list[i].name or channel == str(channel_list[i].id) or channel == channel_list[i].mention:
 			channel_stop = True
 			channel = channel_list[i]
 	else:
