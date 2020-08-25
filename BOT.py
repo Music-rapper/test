@@ -30,7 +30,10 @@ async def emoji(ctx, emoji:discord.Emoji):
 	e_e.set_footer(text = f'Caused by: {str(ctx.author)}', icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = e_e)
 
-def calculator(str(num)):
+def calculator(num):
+	
+	num = str(num)
+	
 	if num[8:10] == '01':
 		day = num[8:10] + 'st'
 	elif num[8:10] == '02':
