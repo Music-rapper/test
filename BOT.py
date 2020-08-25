@@ -38,7 +38,7 @@ async def channel(ctx, channel = None):
 	
 	if channel != None:
 		channel = discord.utils.get(channel_list, name = channel)
-		channel = discord.utils.get(channel_list, id = int(channel))
+		channel = discord.utils.get(channel_list, id = channel)
 		channel = discord.utils.get(channel_list, mention = channel)
 	else:
 		channel = ctx.channel
