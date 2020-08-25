@@ -52,12 +52,12 @@ async def channel(ctx, channel = None):
 				await ctx.send('You wrote channel index incorectly.')
 	
 	for i in range(0, len(role_list)):
-		if channel.overwrites_for(role_list[i]).read_messages == True:
+		if channel.overwrites_for(role_list[i]).read_messages == True or role_list[i].permissions.administrator == True:
 			roles_quantity += 1
 			roles_msg += role_list[i].mention
-			await ctx.send(len(role_list))
-			if i < len(role_list) - 1:
-				roles_msg += ', '
+			roles_msg += ', '
+	else:
+		roles_msg = roles_msg[0: len(roles_msg) - 2]
 	
 	c_e = discord.Embed(title = 'Channel information', color = discord.Color.from_rgb(255, 0, 0))
 	c_e.add_field(name = 'Name', value = channel.name)
