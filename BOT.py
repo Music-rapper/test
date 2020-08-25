@@ -35,20 +35,15 @@ async def channel(ctx, channel = None):
 	
 	guild = ctx.guild
 	channel_list = guild.text_channels
-	channel_stop = False
 	
-	for i in range(0, len(channel_list)):
-		if channel == channel_list[i].name or channel == str(channel_list[i].id) or channel == channel_list[i]:
-			channel_stop = True
-			channel = channel_list[i]
+	if channel != None:
+		channel = discord.utils.get(channel_list, name = channel)
+		channel = discord.utils.get(channel_list, id = int(channel))
+		channel = discord.utils.get(channel_list, mention = channel)
 	else:
-		if channel_stop == False:
-			if channel == None:	
-				channel = ctx.channel
-			else:
-				await ctx.send('You wrote channel index incorectly.')
+		channel = ctx.channel
 	
-	c_e = discord.Embed(description = f'**Channel information about:** {channel.mention}', color = discord.Color.from_rgb(255, 0, 0))
+	c_e = discord.Embed(tile = 'Channel information', color = discord.Color.from_rgb(255, 0, 0))
 	c_e.add_field(name = 'Name', value = channel.name)
 	c_e.add_field(name = 'ID', value = channel.id)
 	c_e.add_field(name = 'Mention', value = f'`{channel.mention}`')
@@ -56,9 +51,9 @@ async def channel(ctx, channel = None):
 		c_e.add_field(name = 'Category', value = channel.category)
 	c_e.add_field(name = 'NSFW', value = channel.is_nsfw())
 	if channel.topic != None:
-		c_e.add_field(name = 'Topic', value = channel.topic)
+		c_e.add_field(name = 'Topic', value = channel.topic, inline = False)
 	c_e.add_field(name = 'Roles', value = '1')
-	c_e.add_field(name = 'Created at', value = channel.created_at)
+	c_e.add_field(name = 'Created at', value = channel.created_at, inline = False)
 	c_e.set_footer(text = f'Caused by: {ctx.author}', icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = c_e)
 	
