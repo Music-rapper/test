@@ -23,12 +23,44 @@ async def help(ctx, command = None):
 
 @Bot.command()
 async def emoji(ctx, emoji:discord.Emoji):
-	e_e = discord.Embed(title = f'`<:{emoji.name}:{emoji.id}>`', color = discord.Color.green())
+	e_e = discord.Embed(title = f'`<:{emoji.name}:{emoji.id}>`', color = discord.Color.from_rgb(255, 0, 0))
 	e_e.set_image(url = emoji.url)
 	e_e.add_field(name = 'Name', value = emoji.name)
 	e_e.add_field(name = 'ID', value = emoji.id)
 	e_e.set_footer(text = f'Caused by: {str(ctx.author)}', icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = e_e)
+
+@Bot.command()
+async def channel(ctx, channel = None):
+	
+	guild = ctx.guild
+	channel_list = guild.text_channels
+	channel_stop = False
+	
+	for i in range(0, len(channel_list)):
+		if channel == channel_list[i].name or channel == str(channel_list[i].id) or channel == channel_list[i]:
+			channel_stop = True
+			channel = channel_list[i]
+		else:
+			if channel_stop == False:
+				if channel == None:
+					channel = ctx.channel
+				else:
+					await ctx.send('You wrote channel index incorectly.')
+	
+	c_e = discord.Embed(title = 'Channel information about:', description = channel.mention, color = discord.Color.from_rgb(255, 0, 0))
+	c_e.add_field(name = 'Name', value = channel.name)
+	c_e.add_field(name = 'ID', value = channel.id)
+	c_e.add_field(name = 'Mention', value = f'`{channel.mention}`')
+	if channel.category != None:
+		c_e.add_field(name = 'Category', value = channel.category)
+	c_e.add_field(name = 'NSFW', value = channel.is_nsfw())
+	if channel.topic != None:
+		c_e.add_field(name = 'Topic', value = channel.topic)
+	c_e.add_field(name = 'Roles', value = channel.changed_roles)
+	c_e.add_field(name = 'Created at', value = channel.created_at)
+	c_e.set_footer(text = f'Caused by: {ctx.author}', icon_url = ctx.author.avatar_url)
+	await ctx.send(embed = c_e)
 	
 @Bot.command()
 async def avatar(ctx, member = None):
@@ -61,9 +93,7 @@ async def avatar(ctx, member = None):
 				member = member_list[i]
 		else:
 			if member_stop == False:
-				if member == None:
-					member = ctx.author
-				else:
+				if member != None:
 					await ctx.send('You wrote member index incorectly.')
 	a_e = discord.Embed(title = f'{member} avatar', color = discord.Color.green())
 	a_e.set_image(url = member.avatar_url)
