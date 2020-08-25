@@ -35,11 +35,16 @@ async def channel(ctx, channel = None):
 	
 	guild = ctx.guild
 	channel_list = guild.text_channels
+	number = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 	
 	if channel != None:
-		channel = discord.utils.get(channel_list, name = channel)
-		channel = discord.utils.get(channel_list, id = channel)
-		channel = discord.utils.get(channel_list, mention = channel)
+		if channel[0] == '<':
+			channel = discord.utils.get(channel_list, mention = channel)
+		elif channel[0] in number:
+			channel = discord.utils.get(channel_list, id = int(channel))
+		else:
+			channel = discord.utils.get(channel_list, name = channel)
+			await ctx.send(channel)
 	else:
 		channel = ctx.channel
 	
