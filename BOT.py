@@ -25,12 +25,31 @@ async def help(ctx, command = None):
 
 @Bot.command()
 async def role(ctx, role = None):
-	pass
+	
+	guild = ctx.guild
+	role_list = guild.roles
+	role_stop = 0
+	
+	for i in range(0, len(role_list)):
+		if role == role_list[i].name or role == str(role_list[i].id) or role == role_list[i].mention:
+			role_stop = True
+			role = role_list[i]
+	else:
+		if role_stop == False:	
+			await ctx.send('You didn\'t write role index.')
+				
+	r_e = discord.Embed(title = 'Role information', color = discord.Color.from_rgb(255, 0, 0))
+	r_e.add_field(name = 'Name', value = role.name)
+	r_e.add_field(name = 'ID', value = role.id)
+	r_e.add_field(name = 'Mention', value = f'`{role.mention}`')
+	r_e.add_field(name = 'Color', value = role.color)
+	r_e.add_field(name = 'Members', value = f'`{role.mention}`')
+	await ctx.send(embed = r_e)
 				
 @Bot.event
 async def on_ready():
 	print('Bot is ready!')
-	await Bot.change_presence(status = discord.Status.dnd, activity = discord.CustomActivity('1234567890', emoji = ':imp:'))
+	await Bot.change_presence(status = discord.Status.dnd, activity = discord.Game('1234567890 :imp:'))
 	
 token = os.environ.get('BOT_TOKEN')
 
