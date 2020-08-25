@@ -35,23 +35,18 @@ async def channel(ctx, channel = None):
 	
 	guild = ctx.guild
 	channel_list = guild.text_channels
-	number = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+	channel_stop = False
 	
-	if channel != None:
-		if channel[0] == '<':
-			channel = discord.utils.get(channel_list, mention = channel)
-		elif len(channel) == 18:
-			if channel[0] in number and channel[17] in number:
-				channel = discord.utils.get(channel_list, id = int(channel))
-			else:
-				channel = discord.utils.get(channel_list, name = channel)
-		else:
-			channel = discord.utils.get(channel_list, name = channel)
-			await ctx.send(type(channel))
-			if type(channel) == 'NoneType':
-				await ctx.send('You wrote channel index incrorectly.')
+	for i in range(0, len(channel_list)):
+		if channel == channel_list[i].name or channel == str(channel_list[i].id) or channel == channel_list[i]:
+			channel_stop = True
+			channel = channel_list[i]
 	else:
-		channel = ctx.channel
+		if channel_stop == False:
+			if channel == None:	
+				channel = ctx.channel
+			else:
+				await ctx.send('You wrote channel index incorectly.')
 	
 	c_e = discord.Embed(title = 'Channel information', color = discord.Color.from_rgb(255, 0, 0))
 	c_e.add_field(name = 'Name', value = channel.name)
