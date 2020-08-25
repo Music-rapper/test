@@ -55,6 +55,7 @@ async def channel(ctx, channel = None):
 		if channel.overwrites_for(role_list[i]).read_messages == True:
 			roles_quantity += 1
 			roles_msg += role_list[i].mention
+			await ctx.send(len(role_list))
 			if i < len(role_list) - 1:
 				roles_msg += ', '
 	
