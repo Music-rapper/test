@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-from discord.ext import utils
 from discord.ext.commands import Bot
 import os
 import time
@@ -49,7 +48,7 @@ async def channel(ctx, channel = None):
 			else:
 				await ctx.send('You wrote channel index incorectly.')
 	
-	c_e = discord.Embed(title = f'Channel information about: {channel.mention}', color = discord.Color.from_rgb(255, 0, 0))
+	c_e = discord.Embed(description = f'**Channel information about:** {channel.mention}', color = discord.Color.from_rgb(255, 0, 0))
 	c_e.add_field(name = 'Name', value = channel.name)
 	c_e.add_field(name = 'ID', value = channel.id)
 	c_e.add_field(name = 'Mention', value = f'`{channel.mention}`')
