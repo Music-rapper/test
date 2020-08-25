@@ -22,6 +22,10 @@ async def help(ctx, command = None):
 	await ctx.send(embed = h_e)
 
 @Bot.command()
+async def perms():
+	await ctx.send(discord.Permissions.text())
+	
+@Bot.command()
 async def emoji(ctx, emoji:discord.Emoji):
 	e_e = discord.Embed(title = f'`<:{emoji.name}:{emoji.id}>`', color = discord.Color.from_rgb(255, 0, 0))
 	e_e.set_image(url = emoji.url)
