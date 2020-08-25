@@ -38,7 +38,7 @@ def calculator(num):
 		day = num[8:10] + 'st'
 	elif num[8:10] == '02':
 		day = num[8:10] + 'nd'
-	elif str(channel.created_at)[8:10] == '03':
+	elif num[8:10] == '03':
 		day = num[8:10] + 'rd'
 	elif num[8:10] == '04' or num[8:10] == '05' or num[8:10] == '06' or num[8:10] == '07' or num[8:10] == '08' or num[8:10] == '09':
 		day = num[8:10] + 'th'
