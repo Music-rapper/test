@@ -49,6 +49,7 @@ async def channel(ctx, channel = None):
 				await ctx.send('You wrote channel index incorectly.')
 	
 	await ctx.send(channel)
+	await ctx.send(channel_list)
 	c_e = discord.Embed(title = 'Channel information', color = discord.Color.from_rgb(255, 0, 0))
 	c_e.add_field(name = 'Name', value = channel.name)
 	c_e.add_field(name = 'ID', value = channel.id)
