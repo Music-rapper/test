@@ -33,9 +33,20 @@ async def leave(ctx):
 async def emoji(ctx, emoji:discord.Emoji):
 	e_e = discord.Embed(title = emoji.name, color = discord.Color.green())
 	e_e.set_image(url = emoji.url)
-	e_e.set_footer(text = 'ID: ' + str(emoji.id))
-	await ctx.channel.purge(limit = 1)
+	e_e.add_field(name = 'ID', value = emoji.id)
+	e_e.set_footer(text = f'Caused by: {str(ctx.author)}', icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = e_e)
+	
+@Bot.command()
+async def avatar(ctx, member = None):
+	if member == None:
+		member = ctx.author
+	else:
+		pass
+	a_e = discord.Embed(title = f'{member}s avatar', color = discord.Color.green())
+	a_e.set_image(url = member.avatar_url)
+	a_e.set_footer(text = f'Caused by: {str(ctx.author)}', icon_url = ctx.author.avatar_url)
+	await ctx.send(embed = a_e)
 				
 @Bot.event
 async def on_ready():
