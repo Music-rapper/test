@@ -14,7 +14,7 @@ Bot.remove_command('help')
 @Bot.command()
 async def help(ctx, command = None):
 	me = ctx.guild.me
-	h_e = discord.Embed(title = 'Phoenix Bot Commands', color = discord.Color.from_rgb(255, 0, 0))
+	h_e = discord.Embed(title = f'{me.name} Bot Commands', color = discord.Color.from_rgb(255, 0, 0))
 	h_e.add_field(name = f'{prefix}avatar', value = 'Give you someone\'s avatar that you can easily download.', inline = False)
 	h_e.add_field(name = f'{prefix}emoji', value = 'Give information about custom emoji.', inline = False)
 	h_e.set_thumbnail(url = me.avatar_url)
