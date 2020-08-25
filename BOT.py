@@ -58,7 +58,7 @@ async def channel(ctx, channel = None):
 	if channel.topic != None:
 		c_e.add_field(name = 'Topic', value = channel.topic, inline = False)
 	role = ctx.author.roles[0]
-	c_e.add_field(name = 'Roles', value = channel.overwrites[role.permissions.read_messages])
+	c_e.add_field(name = 'Roles', value = channel.overwrites['read_messages'])
 	c_e.add_field(name = 'Created at', value = channel.created_at, inline = False)
 	c_e.set_footer(text = f'Caused by: {ctx.author}', icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = c_e)
