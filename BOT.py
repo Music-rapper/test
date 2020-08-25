@@ -342,7 +342,7 @@ def calculator(num):
 				else:
 					msg = f'{year} years, {month} month and {week} weeks and {day} days ago'
 	
-	info = date + msg
+	info = date + f'({msg})'
 	
 	return info
 	
