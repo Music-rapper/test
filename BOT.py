@@ -41,14 +41,14 @@ async def channel(ctx, channel = None):
 		if channel == channel_list[i].name or channel == str(channel_list[i].id) or channel == channel_list[i]:
 			channel_stop = True
 			channel = channel_list[i]
-		else:
-			if channel_stop == False:
-				if channel == None:
-					channel = ctx.channel
-				else:
-					await ctx.send('You wrote channel index incorectly.')
+	else:
+		if channel_stop == False:
+			if channel == None:	
+				channel = ctx.channel
+			else:
+				await ctx.send('You wrote channel index incorectly.')
 	
-	c_e = discord.Embed(title = 'Channel information about:', description = channel.mention, color = discord.Color.from_rgb(255, 0, 0))
+	c_e = discord.Embed(title = f'Channel information about: {channel.mention}', color = discord.Color.from_rgb(255, 0, 0))
 	c_e.add_field(name = 'Name', value = channel.name)
 	c_e.add_field(name = 'ID', value = channel.id)
 	c_e.add_field(name = 'Mention', value = f'`{channel.mention}`')
@@ -57,7 +57,7 @@ async def channel(ctx, channel = None):
 	c_e.add_field(name = 'NSFW', value = channel.is_nsfw())
 	if channel.topic != None:
 		c_e.add_field(name = 'Topic', value = channel.topic)
-	c_e.add_field(name = 'Roles', value = channel.changed_roles)
+	c_e.add_field(name = 'Roles', value = '1')
 	c_e.add_field(name = 'Created at', value = channel.created_at)
 	c_e.set_footer(text = f'Caused by: {ctx.author}', icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = c_e)
