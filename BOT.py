@@ -22,11 +22,15 @@ async def help(ctx, command = None):
 	h_e.set_footer(text = f'Caused by: {str(ctx.author)}', icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = h_e)
 '''	
+
+@Bot.command()
+async def role(ctx, role = None):
+	pass
 				
 @Bot.event
 async def on_ready():
 	print('Bot is ready!')
-	await Bot.change_presence(status = discord.Status.dnd, activity = discord.Game('1234567890'))
+	await Bot.change_presence(status = discord.Status.dnd, activity = discord.CustomActivity('1234567890', emoji = ':imp:'))
 	
 token = os.environ.get('BOT_TOKEN')
 
