@@ -23,7 +23,8 @@ async def help(ctx, command = None):
 
 @Bot.command()
 async def perms(ctx):
-	await ctx.send(discord.Permissions.text().read_messages)
+	await ctx.send(ctx.channel.permissions_for(ctx.author).read_messages)
+	await ctx.send(ctx.channel.overwrites_for(ctx.author.roles[0]).read_messages)
 	
 @Bot.command()
 async def emoji(ctx, emoji:discord.Emoji):
