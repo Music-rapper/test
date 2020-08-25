@@ -465,7 +465,10 @@ async def channel(ctx, channel = None):
 	c_e.add_field(name = 'Mention', value = f'`{channel.mention}`')
 	if channel.category != None:
 		c_e.add_field(name = 'Category', value = channel.category)
-	c_e.add_field(name = 'NSFW', value = channel.is_nsfw())
+	if channel.is_nsfw() == True:
+		c_e.add_field(name = 'NSFW', value = 'Yes')
+	else:
+		c_e.add_field(name = 'NSFW', value = 'No')
 	if channel.topic != None:
 		c_e.add_field(name = 'Topic', value = channel.topic, inline = False)
 	role = ctx.author.roles[0]
