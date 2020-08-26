@@ -54,37 +54,38 @@ async def role(ctx, role = None):
 		r_e.add_field(name = 'Mentionable', value = 'Yes')
 	else:
 		r_e.add_field(name = 'Mentionable', value = 'No')
+		
 	if role.permissions.administrator == True:
 		r_e.add_field(name = 'Key Permissions', value = 'Administrator (all permissions)', inline = False)
 	else:
 		permissions = ''
 		if role.permissions.kick_members == True:
 			permissions += 'Kick members, '
-		elif role.permissions.ban_members == True:
+		if role.permissions.ban_members == True:
 			permissions += 'Ban members, '
-		elif role.permissions.manage_channels == True:
+		if role.permissions.manage_channels == True:
 			permissions += f'Manage channels, '
-		elif role.permissions.manage_guild == True:
+		if role.permissions.manage_guild == True:
 			permissions += f'Manage server, '
-		elif role.permissions.manage_messages == True:
+		if role.permissions.manage_messages == True:
 			permissions += f'Manage messages, '
-		elif role.permissions.mention_everyone == True:
+		if role.permissions.mention_everyone == True:
 			permissions += f'Mention everyone, '
-		elif role.permissions.mute_members == True:
+		if role.permissions.mute_members == True:
 			permissions += f'Mute members, '
-		elif role.permissions.deafen_members == True:
+		if role.permissions.deafen_members == True:
 			permissions += f'Deafen members, '
-		elif role.permissions.move_members == True:
+		if role.permissions.move_members == True:
 			permissions += f'Move members, '
-		elif role.permissions.manage_nicknames == True:
+		if role.permissions.manage_nicknames == True:
 			permissions += f'Manage nicknames, '
-		elif role.permissions.manage_roles == True:
+		if role.permissions.manage_roles == True:
 			permissions += f'Manage roles, '
-		elif role.permissions.manage_webhooks == True:
+		if role.permissions.manage_webhooks == True:
 			permissions += f'Manage webhooks, '
-		elif role.permissions.manage_emojis == True:
+		if role.permissions.manage_emojis == True:
 			permissions += f'manage emojis, '
-		elif role.permissions.view_audit_log == True:
+		if role.permissions.view_audit_log == True:
 			permissions += f'manage emojis, '
 		if len(permissions) == 0:
 			r_e.add_field(name = 'Key Permissions', value = 'Don\'t have any key permission.', inline = False)
