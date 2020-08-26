@@ -2,4 +2,4 @@ discord.py[voice]
 aiohttp
 websockets
 chardet
-asyncpg
+urllib3
