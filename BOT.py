@@ -30,7 +30,7 @@ async def help(ctx, command = None):
 async def test(ctx):
 	r = http.request('GET', 'https://github.com/Vovan4ik507/testbota/blob/master/roles.txt')
 	if len(r.data) > 1999:
-		await ctx.send(r.data[0:1999])
+		await ctx.send(r.data[0:1998])
 	else:
 		await ctx.send(r.data)
 				
