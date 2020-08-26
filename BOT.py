@@ -55,7 +55,7 @@ async def role(ctx, role = None):
 	else:
 		r_e.add_field(name = 'Mentionable', value = 'No')
 	if role.permissions.administrator == True:
-		r_e.add_field(name = 'Key Permissions', value = 'Administrator (all permissions)')
+		r_e.add_field(name = 'Key Permissions', value = 'Administrator (all permissions)', inline = False)
 	else:
 		permissions = ''
 		if role.permissions.general().kick_members:
@@ -70,6 +70,25 @@ async def role(ctx, role = None):
 			permissions += f'Manage messages, '
 		elif role.permissions.general().mention_everyone:
 			permissions += f'Mention everyone, '
+		elif role.permissions.general().mute_members:
+			permissions += f'Mute members, '
+		elif role.permissions.general().deafen_members:
+			permissions += f'Deafen members, '
+		elif role.permissions.general().move_members:
+			permissions += f'Move members, '
+		elif role.permissions.general().manage_nicknames:
+			permissions += f'Manage nicknames, '
+		elif role.permissions.general().manage_roles:
+			permissions += f'Manage roles, '
+		elif role.permissions.general().manage_webhooks:
+			permissions += f'Manage webhooks, '
+		elif role.permissions.general().manage_emojis:
+			permissions += f'manage emojis, '
+		elif role.permissions.general().view_audit_log:
+			permissions += f'manage emojis, '
+		permissions = permissions[0 : len(permissions) - 2]
+		r_e.add_field(name = 'Key Permissions', value = permissions, inline = False)
+		
 	await ctx.send(embed = r_e)
 				
 @Bot.event
