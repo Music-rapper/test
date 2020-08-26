@@ -22,6 +22,20 @@ async def help(ctx, command = None):
 	h_e.set_footer(text = f'Caused by: {str(ctx.author)}', icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = h_e)
 '''	
+
+@Bot.command()
+async def test(ctx, a):
+	try:
+		f1 = open('test.txt', 'w')
+		f1.write(a)
+	finally:
+		f1.close()
+	try:
+		f2 = open('test.txt', 'r')
+		text = f2.read()
+	finally:
+		f2.close()
+	await ctx.send(text)
 				
 @Bot.event
 async def on_ready():
