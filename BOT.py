@@ -44,7 +44,10 @@ async def role(ctx, role = None):
 	r_e.add_field(name = 'Mention', value = f'`{role.mention}`')
 	r_e.add_field(name = 'Color', value = role.color)
 	r_e.add_field(name = 'Members', value = len(role.members))
-	r_e.add_field(name = 'Created at', value = role.created_at)
+	if role.is_default() == True:
+		r_e.add_field(name = 'Default', value = 'Yes')
+	else:
+		r_e.add_field(name = 'Default', value = 'No')
 	r_e.add_field(name = 'Position (from top)', value = f'{len(ctx.guild.roles) - role.position}/{len(ctx.guild.roles)}')
 	if role.hoist == True:
 		r_e.add_field(name = 'Hoisted', value = 'Yes')
@@ -54,6 +57,7 @@ async def role(ctx, role = None):
 		r_e.add_field(name = 'Mentionable', value = 'Yes')
 	else:
 		r_e.add_field(name = 'Mentionable', value = 'No')
+	r_e.add_field(name = 'Created at', value = role.created_at, inline = False)
 		
 	if role.permissions.administrator == True:
 		r_e.add_field(name = 'Key Permissions', value = 'Administrator (all permissions)', inline = False)
