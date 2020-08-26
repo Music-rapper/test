@@ -45,7 +45,7 @@ async def role(ctx, role = None):
 	r_e.add_field(name = 'Color', value = role.color)
 	r_e.add_field(name = 'Members', value = len(role.members))
 	r_e.add_field(name = 'Created at', value = role.created_at)
-	r_e.add_field(name = 'Position (from top)', value = len(ctx.guild.roles) - role.position)
+	r_e.add_field(name = 'Position (from top)', value = f'{len(ctx.guild.roles) - role.position}/{len(ctx.guild.roles)}')
 	if role.hoist == True:
 		r_e.add_field(name = 'Hoisted', value = 'Yes')
 	else:
