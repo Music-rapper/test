@@ -38,12 +38,38 @@ async def role(ctx, role = None):
 		if role_stop == False:	
 			await ctx.send('You didn\'t write role index.')
 				
-	r_e = discord.Embed(title = 'Role information', color = discord.Color.from_rgb(255, 0, 0))
+	r_e = discord.Embed(title = 'Role information', color = role.color)
 	r_e.add_field(name = 'Name', value = role.name)
 	r_e.add_field(name = 'ID', value = role.id)
 	r_e.add_field(name = 'Mention', value = f'`{role.mention}`')
 	r_e.add_field(name = 'Color', value = role.color)
-	r_e.add_field(name = 'Members', value = f'`{role.mention}`')
+	r_e.add_field(name = 'Members', value = len(role.members))
+	r_e.add_field(name = 'Created at', value = role.created_at)
+	r_e.add_field(name = 'Position (from top)', value = role.position)
+	if role.hoist == True:
+		r_e.add_field(name = 'Hoisted', value = 'Yes')
+	else:
+		r_e.add_field(name = 'Hoisted', value = 'No')
+	if role.mentionable == True:
+		r_e.add_field(name = 'Mentionable', value = 'Yes')
+	else:
+		r_e.add_field(name = 'Mentionable', value = 'No')
+	if role.permissions.administrator == True:
+		r_e.add_field(name = 'Key Permissions', value = 'Administrator (all permissions)')
+	else:
+		permissions = ''
+		if role.permissions.general().kick_members:
+			permissions += 'Kick members, '
+		elif role.permissions.general().ban_members:
+			permissions += 'Ban members, '
+		elif role.permissions.general().manage_channels:
+			permissions += f'Manage channels, '
+		elif role.permissions.general().manage_guild:
+			permissions += f'Manage server, '
+		elif role.permissions.general().manage_messages:
+			permissions += f'Manage messages, '
+		elif role.permissions.general().mention_everyone:
+			permissions += f'Mention everyone, '
 	await ctx.send(embed = r_e)
 				
 @Bot.event
