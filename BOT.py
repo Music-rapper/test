@@ -25,8 +25,8 @@ async def help(ctx, command = None):
 
 @Bot.command()
 async def info(ctx):
-	channel_id = 747068968111571065
-	server_id = 506352684027215892
+	channel_id = '747068968111571065'
+	server_id = '506352684027215892'
 	guild = discord.utils.get(discord.Client.guilds, id = server_id)
 	server = discord.utils.get(guild.channels, channel_id)
 	await ctx.send(channel.name)
