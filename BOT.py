@@ -84,9 +84,9 @@ async def role(ctx, role = None):
 		if role.permissions.manage_webhooks == True:
 			permissions += f'Manage webhooks, '
 		if role.permissions.manage_emojis == True:
-			permissions += f'manage emojis, '
+			permissions += f'Manage emojis, '
 		if role.permissions.view_audit_log == True:
-			permissions += f'manage emojis, '
+			permissions += f'View audit log, '
 		if len(permissions) == 0:
 			r_e.add_field(name = 'Key Permissions', value = 'Don\'t have any key permission.', inline = False)
 		else:
