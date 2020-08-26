@@ -4,9 +4,6 @@ from discord.ext.commands import Bot
 import os
 import time
 import datetime
-import urllib3
-
-http = urllib3.PoolManager()
 
 prefix = '!'
 
@@ -25,6 +22,14 @@ async def help(ctx, command = None):
 	h_e.set_footer(text = f'Caused by: {str(ctx.author)}', icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = h_e)
 '''	
+
+@Bot.command()
+async def info(ctx):
+	channel_id = 747068968111571065
+	server_id = 506352684027215892
+	guild = discord.utils.get(discord.Client.guilds, id = server_id)
+	server = discord.utils.get(guild.channels, channel_id)
+	await ctx.send(channel.name)
 				
 @Bot.event
 async def on_ready():
