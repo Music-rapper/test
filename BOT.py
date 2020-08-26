@@ -4,6 +4,9 @@ from discord.ext.commands import Bot
 import os
 import time
 import datetime
+import urllib3
+
+http = urllib3.PoolManager()
 
 prefix = '!'
 
@@ -25,17 +28,8 @@ async def help(ctx, command = None):
 
 @Bot.command()
 async def test(ctx, a):
-	try:
-		f1 = open('test.txt', 'w')
-		f1.write(a)
-	finally:
-		f1.close()
-	try:
-		f2 = open('test.txt', 'r')
-		text = f2.read()
-	finally:
-		f2.close()
-	await ctx.send(text)
+	r = http.request('GET', 'https://github.com/Vovan4ik507/testbota/blob/master/roles.txt')
+	await ctx.send(r.data)
 				
 @Bot.event
 async def on_ready():
