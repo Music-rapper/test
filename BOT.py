@@ -27,9 +27,12 @@ async def help(ctx, command = None):
 '''	
 
 @Bot.command()
-async def test(ctx, a):
+async def test(ctx):
 	r = http.request('GET', 'https://github.com/Vovan4ik507/testbota/blob/master/roles.txt')
-	await ctx.send(r.data)
+	if len(r.data) > 1999:
+		await ctx.send(r.data[0:1999])
+	else:
+		await ctx.send(r.data)
 				
 @Bot.event
 async def on_ready():
