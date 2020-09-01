@@ -34,11 +34,12 @@ async def prefix(ctx, new = None, prefix = bot_prefix):
 		bot_prefix = new
 		await ctx.send(f'You changed your prefix to {new}')
 		await ctx.send(bot_prefix)
+bot_prefix = new
 				
 @Bot.event
 async def on_ready():
 	print('Bot is ready!')
-	await Bot.change_presence(status = discord.Status.dnd, activity = discord.Game('1234567890 :imp:'))
+	await Bot.change_presence(status = discord.Status.dnd, activity = discord.Game('1234567890'))
 	
 token = os.environ.get('BOT_TOKEN')
 
