@@ -2,8 +2,6 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Bot
 import os
-import time
-import datetime
 import psycopg2
 
 prefix = '!'
@@ -27,6 +25,15 @@ async def help(ctx, command = None):
 	h_e.set_footer(text = f'Caused by: {str(ctx.author)}', icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = h_e)
 '''	
+
+@Bot.command()
+async def prefix(ctx, new = None):
+	if new == None:
+		await ctx.send(f'My current prefix is {prefix}')
+	else:
+		global prefix = new
+		await ctx.send(f'You changed your prefix to {new}')
+		await ctx.send(prefix)
 				
 @Bot.event
 async def on_ready():
