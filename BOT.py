@@ -28,9 +28,9 @@ async def membercount(ctx):
 	guild = ctx.guild
 	mention_msg = ''
 	
-	for member in guild.members:
-		if guild.members[member].bot == False:
-			mention_msg += f'{guild.members[member].mention}, '
+	for i in range(0, len(guild.members)):
+		if guild.members[i].bot == False:
+			mention_msg += f'{guild.members[i].mention}, '
 	else:
 		mention_msg -= 2
 	mcm_e = discord.Embed(title = 'Server Members', color = discord.Color.from_rgb(255, 0, 0))
