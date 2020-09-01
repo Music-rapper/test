@@ -4,10 +4,15 @@ from discord.ext.commands import Bot
 import os
 import time
 import datetime
+iport psycopg2
 
 prefix = '!'
 
 Bot = commands.Bot(command_prefix = prefix)
+
+DATABASE_URL = os.environ['DATABASE_URL']
+
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 #Bot.remove_command('help')
 
