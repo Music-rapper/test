@@ -29,7 +29,6 @@ async def help(ctx, command = None):
 def change_prefix(new):
 	bot_prefix = new
 	print(bot_prefix)
-	await ctx.send(f'You changed your prefix to {new}')
 
 @Bot.command()
 async def prefix(ctx, new = None, prefix = bot_prefix):
@@ -37,6 +36,7 @@ async def prefix(ctx, new = None, prefix = bot_prefix):
 		await ctx.send(f'My current prefix is {prefix}')
 	else:
 		change_prefix(new)
+		async ctx.send(f'You changed your prefix to {new}')
 				
 @Bot.event
 async def on_ready():
