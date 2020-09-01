@@ -31,6 +31,7 @@ async def prefix(ctx, new = None):
 	if new == None:
 		await ctx.send(f'My current prefix is {prefix}')
 	else:
+		global prefix
 		prefix = new
 		await ctx.send(f'You changed your prefix to {new}')
 		await ctx.send(prefix)
