@@ -24,10 +24,19 @@ async def help(ctx, command = None):
 '''	
 
 @Bot.command()
-async def info(ctx):
-	guild = discord.utils.get(discord.Client.guilds, id = 506352684027215892)
-	channel = discord.utils.get(guild.channels, id = 747068968111571065)
-	await ctx.send(channel.name)
+async def membercount(ctx):
+	guild = ctx.guild
+	mention_msg = ''
+	
+	for member in guild.members:
+		if guild.members[member].bot == False:
+			mention_msg += f'{guild.members[member].mention}, '
+	else:
+		mention_msg -= 2
+	mcm_e = discord.Embed(title = 'Server Members', color = discord.Color.from_rgb(255, 0, 0))
+	mcm_e.add_field(name = f'Members ({len(guild.members)})', value = mention_msg)
+	mcm_e.set_footer(text = f'Caused by: {str(ctx.author)}', icon_url = ctx.author.avatar_url)
+	await ctx.send(embed = mcm_e)
 				
 @Bot.event
 async def on_ready():
