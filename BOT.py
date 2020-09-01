@@ -22,35 +22,6 @@ async def help(ctx, command = None):
 	h_e.set_footer(text = f'Caused by: {str(ctx.author)}', icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = h_e)
 '''	
-
-@Bot.command()
-async def membercount(ctx):
-	guild = ctx.guild
-	mention_msg = ''
-	name_msg = ''
-	bots = 0
-	
-	for i in range(0, len(guild.members)):
-		if guild.members[i].bot == False:
-			mention_msg += f'{guild.members[i].mention}, '
-		else:
-			bots += 1
-	else:
-		mention_msg = mention_msg[0 : len(mention_msg) - 2]
-	mcm_e = discord.Embed(title = 'Server Members', color = discord.Color.from_rgb(255, 0, 0))
-	mcm_e.add_field(name = f'Members ({len(guild.members) - bots})', value = mention_msg)
-	mcm_e.set_footer(text = f'Caused by: {str(ctx.author)}', icon_url = ctx.author.avatar_url)
-	await ctx.send(embed = mcm_e)
-	
-	for i in range(0, len(guild.members)):
-		if guild.members[i].bot == False:
-			name_msg += f'{guild.members[i].name}, '
-	else:
-		name_msg = name_msg[0 : len(name_msg) - 2]
-	mcm_e = discord.Embed(title = 'Server Members', color = discord.Color.from_rgb(255, 0, 0))
-	mcm_e.add_field(name = f'Members ({len(guild.members) - bots})', value = name_msg)
-	mcm_e.set_footer(text = f'Caused by: {str(ctx.author)}', icon_url = ctx.author.avatar_url)
-	await ctx.send(embed = mcm_e)
 				
 @Bot.event
 async def on_ready():
