@@ -4,9 +4,9 @@ from discord.ext.commands import Bot
 import os
 import psycopg2
 
-prefix = '!'
+bot_prefix = '!'
 
-Bot = commands.Bot(command_prefix = prefix)
+Bot = commands.Bot(command_prefix = bot_prefix)
 
 DATABASE_URL = os.environ['DATABASE_URL']
 
@@ -27,13 +27,13 @@ async def help(ctx, command = None):
 '''	
 
 @Bot.command()
-async def prefix(ctx, new = None, prefix = prefix):
+async def prefix(ctx, new = None, prefix = bot_prefix):
 	if new == None:
 		await ctx.send(f'My current prefix is {prefix}')
 	else:
-		prefix = new
+		bot_prefix = new
 		await ctx.send(f'You changed your prefix to {new}')
-		await ctx.send(prefix)
+		await ctx.send(bot_prefix)
 				
 @Bot.event
 async def on_ready():
