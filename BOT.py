@@ -32,7 +32,7 @@ async def membercount(ctx):
 		if guild.members[i].bot == False:
 			mention_msg += f'{guild.members[i].mention}, '
 	else:
-		mention_msg -= 2
+		mention_msg = mention_msg[0 : len(mention_msg) - 2]
 	mcm_e = discord.Embed(title = 'Server Members', color = discord.Color.from_rgb(255, 0, 0))
 	mcm_e.add_field(name = f'Members ({len(guild.members)})', value = mention_msg)
 	mcm_e.set_footer(text = f'Caused by: {str(ctx.author)}', icon_url = ctx.author.avatar_url)
