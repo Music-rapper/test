@@ -4,7 +4,7 @@ from discord.ext.commands import Bot
 import os
 import time
 import datetime
-iport psycopg2
+import psycopg2
 
 prefix = '!'
 
