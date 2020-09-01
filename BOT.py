@@ -27,8 +27,7 @@ async def help(ctx, command = None):
 '''	
 
 @Bot.command()
-async def prefix(ctx, new = None):
-	global prefix
+async def prefix(ctx, new = None, prefix = prefix):
 	if new == None:
 		await ctx.send(f'My current prefix is {prefix}')
 	else:
