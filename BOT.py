@@ -4,6 +4,8 @@ from discord.ext.commands import Bot
 import os
 import psycopg2
 
+global prefix
+
 prefix = '!'
 
 Bot = commands.Bot(command_prefix = prefix)
@@ -31,7 +33,6 @@ async def prefix(ctx, new = None):
 	if new == None:
 		await ctx.send(f'My current prefix is {prefix}')
 	else:
-		global prefix
 		prefix = new
 		await ctx.send(f'You changed your prefix to {new}')
 		await ctx.send(prefix)
