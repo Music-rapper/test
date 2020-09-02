@@ -3,7 +3,9 @@ from discord.ext import commands
 from discord.ext.commands import Bot
 import os
 
-Bot = commands.Bot(command_prefix = '!')
+bot_prefix = '!'
+
+Bot = commands.Bot(command_prefix = bot_command)
 
 #Bot.remove_command('help')
 
@@ -48,7 +50,7 @@ async def on_message_edit(before: discord.Message, after: discord.Message):
 	channel = discord.utils.get(before.guild.text_channels, name = 'bot')
 	await channel.send(before.content)
 	await channel.send(after.content)
-	commands.Context(message = after)
+	commands.Context(message = after, prefix = bot_prefix)
 	
 token = os.environ.get('BOT_TOKEN')
 
