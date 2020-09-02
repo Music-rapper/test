@@ -35,7 +35,7 @@ async def on_ready():
 	
 @Bot.event
 async def on_message_edit():
-	print(f'{ctx.message} changed')
+	print(f'Сhanged')
 	await ctx.send('Everything is OK!')
 	
 token = os.environ.get('BOT_TOKEN')
