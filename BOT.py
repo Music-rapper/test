@@ -34,7 +34,7 @@ async def on_ready():
 	await Bot.change_presence(status = discord.Status.dnd, activity = discord.Game('1234567890'))
 	
 @Bot.event
-async def on_message_edit():
+async def on_message_edit(guild.channel.last_message, guild.channel.last_message):
 	print(f'Сhanged')
 	await ctx.send('Everything is OK!')
 	
