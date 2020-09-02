@@ -43,10 +43,11 @@ async def on_member_remove(member: discord.Member):
 	channel = discord.utils.get(member.guild.text_channels, name = 'bot')
 	await channel.send(f'{member.mention} leaved the server')
 
-'''
 @Bot.event
-async def on_message_edit()
-'''
+async def on_message_edit(before: discord.Message, after: discord.Message):
+	channel = discord.utils.get(before.guild.text_channels, name = 'bot')
+	await channel.send(before.content)
+	await channel.send(after.content)
 	
 token = os.environ.get('BOT_TOKEN')
 
