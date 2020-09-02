@@ -7,6 +7,12 @@ bot_prefix = '!'
 
 Bot = commands.Bot(command_prefix = bot_prefix)
 
+@Bot.event
+async def on_message_edit(before: discord.Message, after: discord.Message):
+	channel = discord.utils.get(before.guild.text_channels, name = 'bot')
+	await channel.send(before.content)
+	await channel.send(after.content)
+
 #Bot.remove_command('help')
 
 '''
@@ -44,13 +50,6 @@ async def on_member_join(member: discord.Member):
 async def on_member_remove(member: discord.Member):
 	channel = discord.utils.get(member.guild.text_channels, name = 'bot')
 	await channel.send(f'{member.mention} leaved the server')
-
-@Bot.event
-async def on_message_edit(before: discord.Message, after: discord.Message):
-	channel = discord.utils.get(before.guild.text_channels, name = 'bot')
-	await channel.send(before.content)
-	await channel.send(after.content)
-	commands.Context(message = after, prefix = bot_prefix, command = after.content[1 : len(after.content)])
 	
 token = os.environ.get('BOT_TOKEN')
 
