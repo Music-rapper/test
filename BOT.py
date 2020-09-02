@@ -5,7 +5,7 @@ import os
 
 bot_prefix = '!'
 
-Bot = commands.Bot(command_prefix = bot_command)
+Bot = commands.Bot(command_prefix = bot_prefix)
 
 #Bot.remove_command('help')
 
