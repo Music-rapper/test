@@ -2,15 +2,8 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Bot
 import os
-import psycopg2
 
-bot_prefix = '!'
-
-Bot = commands.Bot(command_prefix = bot_prefix)
-
-DATABASE_URL = os.environ['DATABASE_URL']
-
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+Bot = commands.Bot(command_prefix = '!')
 
 #Bot.remove_command('help')
 
@@ -27,10 +20,11 @@ async def help(ctx, command = None):
 '''	
 
 @Bot.command()
-async def prefix(ctx, new = None, prefix = bot_prefix):
+async def prefix(ctx, new = None):
 	if new == None:
-		await ctx.send(f'My current prefix is {prefix}')
+		await ctx.send(f'My current prefix is {!}')
 	else:
+		new = f'{new}'
 		Bot = commands.Bot(command_prefix = new)
 		await ctx.send(f'You changed your prefix to {new}')
 				
@@ -38,6 +32,11 @@ async def prefix(ctx, new = None, prefix = bot_prefix):
 async def on_ready():
 	print('Bot is ready!')
 	await Bot.change_presence(status = discord.Status.dnd, activity = discord.Game('1234567890'))
+	
+@Bot.event
+async def on_message_edit(ctx.messsage, ctx.message):
+	print(f'{ctx.message} changed')
+	await ctx.send('Everything is OK!')
 	
 token = os.environ.get('BOT_TOKEN')
 
