@@ -50,7 +50,7 @@ async def on_message_edit(before: discord.Message, after: discord.Message):
 	channel = discord.utils.get(before.guild.text_channels, name = 'bot')
 	await channel.send(before.content)
 	await channel.send(after.content)
-	commands.Context(message = after, prefix = bot_prefix)
+	commands.Context(message = after, prefix = bot_prefix, command = after.content[1 : len(after.content)])
 	
 token = os.environ.get('BOT_TOKEN')
 
