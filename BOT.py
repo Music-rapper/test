@@ -22,7 +22,7 @@ async def help(ctx, command = None):
 @Bot.command()
 async def prefix(ctx, new = None):
 	if new == None:
-		await ctx.send(f'My current prefix is {!}')
+		await ctx.send('My current prefix is !')
 	else:
 		new = f'{new}'
 		Bot = commands.Bot(command_prefix = new)
