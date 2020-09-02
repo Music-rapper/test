@@ -38,6 +38,11 @@ async def on_member_join(member: discord.Member):
 	channel = discord.utils.get(member.guild.text_channels, name = 'bot')
 	await channel.send(f'{member} joined to the server')
 	
+@Bot.event
+async def on_member_remove(member: discord.Member):
+	channel = discord.utils.get(member.guild.text_channels, name = 'bot')
+	await channel.send(f'{member} leaved the server')
+	
 token = os.environ.get('BOT_TOKEN')
 
 Bot.run(str(token))
