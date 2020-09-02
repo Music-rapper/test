@@ -9,7 +9,8 @@ Bot = commands.Bot(command_prefix = bot_prefix)
 
 @Bot.event
 async def on_message_edit(before: discord.Message, after: discord.Message):
-	channel = discord.utils.get(before.guild.text_channels, name = 'bot')
+	channel = discord.utils.get(before.guild.text_channels, name = 'лог')
+	ed_e = discord.Embed(title = 'Message Edited')
 	await channel.send(before.content)
 	await channel.send(after.content)
 
