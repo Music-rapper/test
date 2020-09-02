@@ -34,8 +34,8 @@ async def on_ready():
 	await Bot.change_presence(status = discord.Status.dnd, activity = discord.Game('1234567890'))
 	
 @Bot.event
-async def on_member_join(member):
-	channel = discord.utils.get(guild.channels, name = 'bot')
+async def on_member_join(member: discord.Member):
+	channel = discord.utils.get(member.guild.text_channels, name = 'bot')
 	await channel.send(f'{member} joined to the server')
 	
 token = os.environ.get('BOT_TOKEN')
