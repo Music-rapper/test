@@ -29,13 +29,26 @@ async def help(ctx, command = None):
 '''	
 
 @Bot.command()
-async def prefix(ctx, new = None):
-	if new == None:
-		await ctx.send('My current prefix is !')
+async def inrole(ctx, role = None):
+	if role == None:
+		ctx.send('You didn\'t write role')
 	else:
-		new = f'{new}'
-		Bot = commands.Bot(command_prefix = new)
-		await ctx.send(f'You changed your prefix to {new}')
+		guild = ctx.guild
+		role_list = guild.roles
+		role_stop = 0
+	
+		for i in range(0, len(role_list)):
+			if role == role_list[i].name or role == str(role_list[i].id) or role == role_list[i].mention:
+				role_stop = True
+				role = role_list[i]
+		else:
+			if role_stop == False:	
+				await ctx.send('You didn\'t write role index.')
+	ir_e = dicord.Embed(color = role.color)
+	ir_m = ''
+	for i in range(0, len(role.members)):
+		ir_m += role.members[i].mention + '\n'
+	ir_e.add_field(name = f'People with role {role.mention}: {len(role.members)}', value = ir_m)
 				
 @Bot.event
 async def on_ready():
