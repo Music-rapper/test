@@ -10,7 +10,7 @@ Bot = commands.Bot(command_prefix = bot_prefix)
 @Bot.command()
 async def test(ctx, info = None):
 	if info != None:
-		info: discord.Members
+		info: discord.Member
 	else:
 		info = ctx.author
 	await ctx.send(info)
