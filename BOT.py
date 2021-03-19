@@ -13,7 +13,8 @@ async def test(ctx, info: discord.Member):
 	await ctx.send(type(info))
 
 @Bot.command()
-async def test(ctx, info = ctx.author):
+async def test(ctx, info = None):
+	info = ctx.author
 	await ctx.send(info)
 	await ctx.send(type(info))
 	
