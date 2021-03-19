@@ -8,7 +8,7 @@ bot_prefix = ['!']
 Bot = commands.Bot(command_prefix = bot_prefix)
 
 @Bot.command()
-async def test(ctx, info = None, bot: discord.Member):
+async def test(ctx, bot: discord.Member, info = None):
 	if info != None:
 		member = discord.Member
 	else:
