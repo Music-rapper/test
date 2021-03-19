@@ -9,7 +9,7 @@ Bot = commands.Bot(command_prefix = bot_prefix)
 
 @Bot.command()
 async def members(ctx):
-	guild = discord.utils.get(Client.guilds, guild__name = ctx.guild.name)
+	guild = discord.utils.get(discord.Client.guilds, guild__name = ctx.guild.name)
 	print(guild.members)
 
 @Bot.command()
