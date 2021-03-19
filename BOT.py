@@ -8,14 +8,6 @@ bot_prefix = ['!']
 Bot = commands.Bot(command_prefix = commands.when_mentioned_or('!'))
 
 @Bot.command()
-async def test(ctx, info = None):
-	if info != None:
-		info1 = discord.Member
-		info1 = info
-	await ctx.send(info1)
-	await ctx.send(type(info1))
-
-@Bot.command()
 async def inrole(ctx, role = None):
 	if role == None:
 		ctx.send('You didn\'t write role')
