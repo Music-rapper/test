@@ -9,10 +9,8 @@ Bot = commands.Bot(command_prefix = bot_prefix)
 
 @Bot.command()
 async def members(ctx):
-	guild_id = ctx.guild.id
-	guild = discord.Client.get_guild(self.id == guild_id)
-	await ctx.send(guild)
-	await ctx.send(guild.members)
+	guild = ctx.guild
+	await ctx.send(guild.owner)
 	
 @Bot.command()
 async def inrole(ctx, role = None):
