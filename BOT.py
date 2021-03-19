@@ -8,8 +8,13 @@ bot_prefix = ['!']
 Bot = commands.Bot(command_prefix = bot_prefix)
 
 @Bot.command()
+async def members(ctx):
+	guild = ctx.guild
+	await ctx.send(guild.members)
+
+@Bot.command()
 async def cytate(ctx, id = discord.Message.id):
-	await ctx.send(id)
+	await ctx.send(id = id)
 
 @Bot.command()
 async def inrole(ctx, role = None):
