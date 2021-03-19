@@ -9,7 +9,7 @@ Bot = commands.Bot(command_prefix = bot_prefix)
 
 @Bot.command()
 async def members(ctx):
-	guild = discord.Client.get_guild(ctx.guild.id)
+	async guild = discord.Client.get_guild(ctx.guild.id)
 	await ctx.send(guild)
 	await ctx.send(guild.members)
 	
