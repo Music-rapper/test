@@ -10,7 +10,7 @@ Bot = commands.Bot(command_prefix = bot_prefix)
 @Bot.command()
 async def test(ctx, bot: discord.Member, info = None):
 	if info != None:
-		member = discord.Member
+		member = discord.member.Member(info)
 	else:
 		member = ctx.author
 	await ctx.send(member)
@@ -32,7 +32,7 @@ async def inrole(ctx, role = None):
 		else:
 			if role_stop == False:	
 				await ctx.send('You didn\'t write role index.')
-	ir_e = dicord.Embed(color = role.color)
+	ir_e = discord.Embed(color = role.color)
 	ir_m = ''
 	for i in range(0, len(role.members)):
 		ir_m += role.members[i].mention + '\n'
