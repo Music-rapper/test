@@ -10,7 +10,8 @@ Bot = commands.Bot(command_prefix = bot_prefix)
 @Bot.command()
 async def members(ctx):
 	guild = ctx.guild
-	await ctx.send(guild.members)
+	for i in range(0, len(guild.members)):
+		await ctx.send(guild.members[i])
 
 @Bot.command()
 async def cytate(ctx, id = discord.Message.id):
