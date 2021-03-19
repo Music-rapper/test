@@ -9,8 +9,9 @@ Bot = commands.Bot(command_prefix = bot_prefix)
 
 @Bot.command()
 async def members(ctx):
-	guild = discord.utils.get(discord.Client.guilds, name = ctx.guild.name)
-	print(guild.members)
+	guild = ctx.guild
+	await ctx.send(guild)
+	await ctx.send(guild.members)
 
 @Bot.command()
 async def inrole(ctx, role = None):
