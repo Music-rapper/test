@@ -185,5 +185,5 @@ async def on_member_remove(member: discord.Member):
 	
 token = os.environ.get('BOT_TOKEN')
 
-Bot.add_cog(Music(bot))
+Bot.add_cog(Music(Bot))
 Bot.run(str(token))
