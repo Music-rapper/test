@@ -10,11 +10,7 @@ Bot = commands.Bot(command_prefix = bot_prefix)
 @Bot.command()
 async def members(ctx):
 	guild = ctx.guild
-	print(guild.members
-
-@Bot.command()
-async def cytate(ctx, id = discord.Message.id):
-	await ctx.send(id = id)
+	print(guild.members)
 
 @Bot.command()
 async def inrole(ctx, role = None):
