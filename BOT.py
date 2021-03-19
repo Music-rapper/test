@@ -10,7 +10,7 @@ Bot = commands.Bot(command_prefix = bot_prefix)
 @Bot.command()
 async def members(ctx):
 	guild = ctx.guild
-	await ctx.send(guild.owner)
+	await ctx.send(guild.members)
 	
 @Bot.command()
 async def inrole(ctx, role = None):
