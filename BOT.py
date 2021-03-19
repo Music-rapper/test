@@ -6,7 +6,7 @@ import os
 
 bot_prefix = ['!']
 
-Bot = commands.Bot(command_prefix = commands.when_mentioned_or(bot_prefix))
+Bot = commands.Bot(command_prefix = commands.when_mentioned_or('!'))
 
 youtube_dl.utils.bug_reports_message = lambda: ''
 
