@@ -8,16 +8,14 @@ bot_prefix = ['!']
 Bot = commands.Bot(command_prefix = bot_prefix)
 
 @Bot.command()
-async def test(ctx, info: discord.Member):
+async def test(ctx, info = None):
+	if info != None:
+		info: discord.Members
+	else:
+		info = ctx.author
 	await ctx.send(info)
 	await ctx.send(type(info))
 
-@Bot.command()
-async def test(ctx, info = None):
-	info = ctx.author
-	await ctx.send(info)
-	await ctx.send(type(info))
-	
 @Bot.command()
 async def inrole(ctx, role = None):
 	if role == None:
