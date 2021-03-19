@@ -9,7 +9,7 @@ Bot = commands.Bot(command_prefix = bot_prefix)
 
 @Bot.command()
 async def test(ctx, info = None):
-	if member != None:
+	if info != None:
 		member = discord.Member(info)
 	else:
 		member = ctx.author
